@@ -1,0 +1,7 @@
+C:\Users\lee\OneDrive\Documents\Github local repostories\LPR_PROJECT_AM\LPR381-GroupAM_10\Simplex_Solver_APP\bin\Debug\Simplex_Solver_APP.exe.config
+C:\Users\lee\OneDrive\Documents\Github local repostories\LPR_PROJECT_AM\LPR381-GroupAM_10\Simplex_Solver_APP\bin\Debug\Simplex_Solver_APP.exe
+C:\Users\lee\OneDrive\Documents\Github local repostories\LPR_PROJECT_AM\LPR381-GroupAM_10\Simplex_Solver_APP\bin\Debug\Simplex_Solver_APP.pdb
+C:\Users\lee\OneDrive\Documents\Github local repostories\LPR_PROJECT_AM\LPR381-GroupAM_10\Simplex_Solver_APP\obj\Debug\Simplex_Solver_APP.csproj.AssemblyReference.cache
+C:\Users\lee\OneDrive\Documents\Github local repostories\LPR_PROJECT_AM\LPR381-GroupAM_10\Simplex_Solver_APP\obj\Debug\Simplex_Solver_APP.csproj.CoreCompileInputs.cache
+C:\Users\lee\OneDrive\Documents\Github local repostories\LPR_PROJECT_AM\LPR381-GroupAM_10\Simplex_Solver_APP\obj\Debug\Simplex_Solver_APP.exe
+C:\Users\lee\OneDrive\Documents\Github local repostories\LPR_PROJECT_AM\LPR381-GroupAM_10\Simplex_Solver_APP\obj\Debug\Simplex_Solver_APP.pdb
