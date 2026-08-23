@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 //import modules
 using Simplex_Solver_APP.Model;
 using Simplex_Solver_APP.File_handler;
+using Simplex_Solver_APP.Solvers;
 using System.Windows.Forms;
 
 namespace Simplex_Solver_APP
@@ -86,6 +87,7 @@ namespace Simplex_Solver_APP
                 switch (option)
                 {
                     case algorithms.Primal:
+                        RunSolver(() => new PrimalSimplexSolver().Solve(model, writer));
                         break;
                     case algorithms.revised:
                         break;
@@ -94,6 +96,7 @@ namespace Simplex_Solver_APP
                     case algorithms.Cutting_plane:
                         break;
                     case algorithms.Napsack:
+                        RunSolver(() => new BranchAndBoundKnapsackSolver().Solve(model, writer));
                         break;
                     case algorithms.exit:
                         terminate = true;
@@ -107,9 +110,38 @@ namespace Simplex_Solver_APP
 
             }
         }
+        // Runs a solver, reporting progress/errors to the console while the
+        // solver itself writes its full working (canonical form, tableau
+        // iterations, solution, etc.) to the OUTPUT file via 'writer'.
+        private static void RunSolver(Action solve)
+        {
+            try
+            {
+                Console.ForegroundColor = ConsoleColor.Cyan;
+                Console.WriteLine("Solving... results are being written to the OUTPUT file.\n");
+                Console.ResetColor();
+
+                solve();
+
+                writer.WriteLine();
+                writer.WriteLine("========================================================\n");
+
+                Console.ForegroundColor = ConsoleColor.Green;
+                Console.WriteLine("\nDone. See the OUTPUT file for the full working.\n");
+                Console.ResetColor();
+            }
+            catch (Exception ex)
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("Solver error: " + ex.Message);
+                Console.ResetColor();
+                writer.WriteLine("Solver error: " + ex.Message);
+            }
+        }
+
         private static string InputFile()
         {
-            Console.WriteLine("please Select the INPUT text file");
+            Console.WriteLine("Press any key to Select the INPUT text file");
             Console.ReadKey();
             Thread.Sleep(1000);
             using (OpenFileDialog dialog = new OpenFileDialog())
@@ -130,7 +162,7 @@ namespace Simplex_Solver_APP
 
         private static string OutputFile()
         {
-            Console.WriteLine("\nPath to OUTPUT file:  ");
+            Console.WriteLine("\nPress any key to Select the OUTPUT text file");
             Console.ReadKey();
             using (OpenFileDialog dialog = new OpenFileDialog())
             {
