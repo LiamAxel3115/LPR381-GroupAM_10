@@ -50,6 +50,7 @@
     <Compile Include="Model\Formatting.cs" />
     <Compile Include="Model\Formulation.cs" />
     <Compile Include="Solvers\PrimalSimplexSolver.cs" />
+	<Compile Include="Solvers\BranchAndBoundSolver.cs" />
     <Compile Include="Solvers\BranchAndBoundKnapsackSolver.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

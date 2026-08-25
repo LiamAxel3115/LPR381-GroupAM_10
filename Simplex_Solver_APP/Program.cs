@@ -16,6 +16,7 @@ namespace Simplex_Solver_APP
 {
     public static class Program
     {
+
         //private static readonly List<Solvers> algorithms = new()
         //{
         //    new PrimalSimplexSolver(),
@@ -24,6 +25,7 @@ namespace Simplex_Solver_APP
         //    new CuttingPlaneSolver(),
         //    new BranchAndBoundKnapsackSolver(),
         //};
+
         private static Formulation model;
         private static File_writer writer;
 
@@ -92,6 +94,7 @@ namespace Simplex_Solver_APP
                     case algorithms.revised:
                         break;
                     case algorithms.Branch_And_Bound:
+                        RunSolver(() => new BranchAndBoundSolver().Solve(model, writer));
                         break;
                     case algorithms.Cutting_plane:
                         break;
