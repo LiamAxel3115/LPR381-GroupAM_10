@@ -9,6 +9,26 @@ using Simplex_Solver_APP.File_handler;
 
 namespace Simplex_Solver_APP.Solvers
 {
+
+
+    public class Result
+    {
+
+        private double[] solution;
+        private double objectiveValue;
+        private bool isOptimal;
+        private bool isInfeasible;
+        private bool isUnbounded;
+
+        public double[] Solution { get => solution; set => solution = value; }
+        public double ObjectiveValue { get => objectiveValue; set => objectiveValue = value; }
+        public bool IsOptimal { get => isOptimal; set => isOptimal = value; }
+        public bool IsInfeasible { get => isInfeasible; set => isInfeasible = value; }
+        public bool IsUnbounded { get => isUnbounded; set => isUnbounded = value; }
+
+    }
+
+
     /// <summary>
     /// Solves a Linear Programming model using the Primal (Tableau) Simplex
     /// Algorithm together with the Big-M method, so that &lt;=, &gt;= and =
@@ -46,7 +66,7 @@ namespace Simplex_Solver_APP.Solvers
             public string Kind; // "slack", "surplus" or "artificial"
         }
 
-        public void Solve(Formulation model, File_writer writer)
+        public Result Solve(Formulation model, File_writer writer)
         {
             writer.WriteLine("========================================================");
             writer.WriteLine("           PRIMAL SIMPLEX ALGORITHM (Big-M method)        ");
@@ -319,7 +339,7 @@ namespace Simplex_Solver_APP.Solvers
                 if (leave == -1)
                 {
                     writer.WriteLine("Problem is UNBOUNDED: column " + columnNames[enter] + " can increase without limit.");
-                    return;
+                    return new Result { IsUnbounded = true};
                 }
 
                 writer.WriteLine("Entering variable: " + columnNames[enter] +
@@ -348,7 +368,7 @@ namespace Simplex_Solver_APP.Solvers
                 if (iteration > 500)
                 {
                     writer.WriteLine("Stopped after 500 iterations (possible cycling/degeneracy). Please check the model.");
-                    return;
+                    return null;
                 }
             }
 
@@ -362,7 +382,7 @@ namespace Simplex_Solver_APP.Solvers
                 {
                     writer.WriteLine("Problem is INFEASIBLE: artificial variable " + columnNames[basis[i]] +
                                       " remains positive (" + Round(b[i]) + ") in the optimal basis.");
-                    return;
+                    return new Result { IsInfeasible = true };
                 }
             }
 
@@ -374,6 +394,7 @@ namespace Simplex_Solver_APP.Solvers
 
             writer.WriteLine("--- Optimal Solution ---");
             double objectiveValue = 0;
+            double[] solutionArray = new double[model.VarCount];
             for (int j = 0; j < model.VarCount; j++)
             {
                 var map = maps[j];
@@ -387,9 +408,11 @@ namespace Simplex_Solver_APP.Solvers
 
                 writer.WriteLine("x" + (j + 1) + " = " + Round(xj));
                 objectiveValue += model.Obj_Func_coefficients[j] * xj;
+                solutionArray[j] = xj;
             }
 
             writer.WriteLine("Optimal objective value (" + (maximize ? "max" : "min") + ") = " + Round(objectiveValue));
+            return new Result { IsOptimal = true, ObjectiveValue = objectiveValue, Solution = solutionArray };
         }
 
         private static void PrintTableau(File_writer writer, int iteration, List<string> columnNames,
