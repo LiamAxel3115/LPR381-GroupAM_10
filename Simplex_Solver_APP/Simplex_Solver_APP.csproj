@@ -44,13 +44,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Analysis\Duality.cs" />
+    <Compile Include="Analysis\Dualsimplex.cs" />
+    <Compile Include="Analysis\optimal.cs" />
+    <Compile Include="Analysis\Primal.cs" />
     <Compile Include="File_handler\File_Reader.cs" />
     <Compile Include="File_handler\File_writer.cs" />
     <Compile Include="Model\Conditions.cs" />
     <Compile Include="Model\Formatting.cs" />
     <Compile Include="Model\Formulation.cs" />
     <Compile Include="Solvers\PrimalSimplexSolver.cs" />
-	<Compile Include="Solvers\BranchAndBoundSolver.cs" />
+    <Compile Include="Solvers\BranchAndBoundSolver.cs" />
     <Compile Include="Solvers\BranchAndBoundKnapsackSolver.cs" />
     <Compile Include="Solvers\CuttingPlaneSolver.cs" />
     <Compile Include="Solvers\RevisedPrimalSimplexSolver.cs" />
@@ -64,5 +68,6 @@
     <Content Include="INPUT.txt" />
     <Content Include="OUTPUT.txt" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

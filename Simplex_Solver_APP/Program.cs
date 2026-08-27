@@ -1,3 +1,8 @@
+using Simplex_Solver_APP.Analysis;
+using Simplex_Solver_APP.File_handler;
+//import modules
+using Simplex_Solver_APP.Model;
+using Simplex_Solver_APP.Solvers;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -5,11 +10,6 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
-
-//import modules
-using Simplex_Solver_APP.Model;
-using Simplex_Solver_APP.File_handler;
-using Simplex_Solver_APP.Solvers;
 using System.Windows.Forms;
 
 namespace Simplex_Solver_APP
@@ -17,17 +17,9 @@ namespace Simplex_Solver_APP
     public static class Program
     {
 
-        //private static readonly List<Solvers> algorithms = new()
-        //{
-        //    new PrimalSimplexSolver(),
-        //    new RevisedPrimalSimplexSolver(),
-        //    new BranchAndBoundSimplexSolver(),
-        //    new CuttingPlaneSolver(),
-        //    new BranchAndBoundKnapsackSolver(),
-        //};
-
         private static Formulation model;
         private static File_writer writer;
+        private static Optimal lastOptimal;
 
         [STAThread]
         static void Main(string[] args)
@@ -63,6 +55,8 @@ namespace Simplex_Solver_APP
             Branch_And_Bound,
             Cutting_plane,
             Napsack,
+            Sensitivity,
+            Duality,
             exit
         }
 
@@ -78,10 +72,19 @@ namespace Simplex_Solver_APP
                 Console.WriteLine(" \t 3)  Solve using Branch & Bound Simplex ");
                 Console.WriteLine(" \t 4)  Solve using Cutting Plane ");
                 Console.WriteLine(" \t 5)  Solve using Branch & Bound Knapsack ");
-                Console.WriteLine(" \t 6)  exit ");
-                Console.Write(" Select (1-6) from the MENU: ");
+                Console.WriteLine(" \t 6)  Sensitivity Analysis ");
+                Console.WriteLine(" \t 7)  Duality ");
+                Console.WriteLine(" \t 8)  exit ");
+                Console.Write(" Select (1-8) from the MENU: ");
 
-                int input_param = int.Parse(Console.ReadLine().Trim());
+                int input_param;
+
+                if (!int.TryParse(Console.ReadLine().Trim(), out input_param))
+                {
+                    Console.WriteLine("Please enter a number between 1 and 8.\n");
+                    continue;
+                }
+
                 Console.WriteLine();
 
                 algorithms option = (algorithms)input_param;
@@ -89,7 +92,9 @@ namespace Simplex_Solver_APP
                 switch (option)
                 {
                     case algorithms.Primal:
+                     
                         RunSolver(() => new PrimalSimplexSolver().Solve(model, writer));
+                     
                         break;
                     case algorithms.revised:
                         RunSolver(() => new RevisedPrimalSimplexSolver().Solve(model, writer));
@@ -102,6 +107,15 @@ namespace Simplex_Solver_APP
                         break;
                     case algorithms.Napsack:
                         RunSolver(() => new BranchAndBoundKnapsackSolver().Solve(model, writer));
+                        break;
+                    case algorithms.Sensitivity:
+                        showSensitivity();
+                        break;
+                    case algorithms.Duality:
+                        Primal solver = new Primal();
+                       RunSolver(() => solver.Solve(model, writer));
+                        lastOptimal = solver.GetLastResult();
+                        ShowDuality();
                         break;
                     case algorithms.exit:
                         terminate = true;
@@ -142,6 +156,7 @@ namespace Simplex_Solver_APP
                 Console.ResetColor();
                 writer.WriteLine("Solver error: " + ex.Message);
             }
+            
         }
 
         private static string InputFile()
@@ -309,6 +324,54 @@ namespace Simplex_Solver_APP
 
 
 
+        }
+
+        // trying to edit
+        private static void showSensitivity()
+        {
+
+        }
+        private static void ShowDuality()
+        {
+            if (lastOptimal == null || !lastOptimal.IsOptimal)
+            {
+                Console.WriteLine("Run Primal Simplex first.");
+                return;
+            }
+
+            Console.ForegroundColor = ConsoleColor.Cyan;
+            Console.WriteLine("Building and solving the Dual Model...");
+            Console.ResetColor();
+
+            Primal solver = new Primal();
+
+            // Rebuild the solved LP relaxation
+            solver.Solve(model, writer);
+
+            Duality dual = new Duality(solver.SolvedModel);
+
+            writer.WriteLine();
+            writer.WriteLine(dual.DisplayDual());
+
+            Formulation dualModel = dual.BuildDual();
+
+            writer.WriteLine();
+            writer.WriteLine("Solving the Dual Model...");
+            writer.WriteLine();
+
+            Primal  dualSolver = new Primal();
+            dualSolver.Solve(dualModel, writer);
+
+            writer.WriteLine();
+            writer.WriteLine(
+
+                dual.VerifyDuality(
+                    lastOptimal.ObjectiveValue,
+                    dualSolver.GetLastResult().ObjectiveValue));
+
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine("Dual model solved. See OUTPUT.txt.");
+            Console.ResetColor();
         }
     }
 }

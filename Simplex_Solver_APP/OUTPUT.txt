@@ -125,13 +125,6 @@ Optimal objective value (max) = 15,4
 
 ========================================================
 
-=======================================
-  BRANCH AND BOUND SIMPLEX ALGORITHM   
-=======================================
-
-=======================================
-Sub-problem: 0 (parent: -1):  Root
-=======================================
 ========================================================
            PRIMAL SIMPLEX ALGORITHM (Big-M method)        
 ========================================================
@@ -245,876 +238,171 @@ x4 = 1
 x5 = 0,2
 x6 = 1
 Optimal objective value (max) = 15,4
-Status: Fractional on x5 = 0,2, Branching
 
-=======================================
-Sub-problem: 2 (parent: 0):  x5 >= 1
-=======================================
+================================================
+               DUAL MODEL
+================================================
+
+Type	: Linear Programming model
+
+Objective	: min +40x1 +1x2 +1x3 +1x4 +1x5 +1x6 +1x7
+Variables	: 7
+
+Constraints	: 6
+  c1: +11x1 +1x2 +0x3 +0x4 +0x5 +0x6 +0x7 >= 2
+  c2: +8x1 +0x2 +1x3 +0x4 +0x5 +0x6 +0x7 >= 3
+  c3: +6x1 +0x2 +0x3 +1x4 +0x5 +0x6 +0x7 >= 3
+  c4: +14x1 +0x2 +0x3 +0x4 +1x5 +0x6 +0x7 >= 5
+  c5: +10x1 +0x2 +0x3 +0x4 +0x5 +1x6 +0x7 >= 2
+  c6: +10x1 +0x2 +0x3 +0x4 +0x5 +0x6 +1x7 >= 4
+
+Sign restrictions:
+  x1=+ x2=+ x3=+ x4=+ x5=+ x6=+ x7=+
+
+
+Solving the Dual Model...
+
 ========================================================
            PRIMAL SIMPLEX ALGORITHM (Big-M method)        
 ========================================================
 
-Note: x1 is binary -> added implicit bound x1 <= 1 for the LP relaxation.
-Note: x2 is binary -> added implicit bound x2 <= 1 for the LP relaxation.
-Note: x3 is binary -> added implicit bound x3 <= 1 for the LP relaxation.
-Note: x4 is binary -> added implicit bound x4 <= 1 for the LP relaxation.
-Note: x5 is binary -> added implicit bound x5 <= 1 for the LP relaxation.
-Note: x6 is binary -> added implicit bound x6 <= 1 for the LP relaxation.
 
 --- Canonical Form ---
-Maximize Z =  +2x1 +3x2 +3x3 +5x4 +2x5 +4x6
-  c1: +11x1 +8x2 +6x3 +14x4 +10x5 +10x6 +1s1 = 40
-  c2: +1x5 -1e1 +1a1 = 1
-  c3: +1x1 +1s2 = 1
-  c4: +1x2 +1s3 = 1
-  c5: +1x3 +1s4 = 1
-  c6: +1x4 +1s5 = 1
-  c7: +1x5 +1s6 = 1
-  c8: +1x6 +1s7 = 1
+Minimize Z =  -40x1 -1x2 -1x3 -1x4 -1x5 -1x6 -1x7
+(solved internally as Maximize -Z; the reported objective value below is the true minimum)
+  c1: +11x1 +1x2 -1e1 +1a1 = 2
+  c2: +8x1 +1x3 -1e2 +1a2 = 3
+  c3: +6x1 +1x4 -1e3 +1a3 = 3
+  c4: +14x1 +1x5 -1e4 +1a4 = 5
+  c5: +10x1 +1x6 -1e5 +1a5 = 2
+  c6: +10x1 +1x7 -1e6 +1a6 = 4
 
 --- Iteration 0 (Initial Tableau) ---
-Basis           x1        x2        x3        x4        x5        x6        s1        e1        a1        s2        s3        s4        s5        s6        s7       RHS
-s1              11         8         6        14        10        10         1         0         0         0         0         0         0         0         0        40
-a1               0         0         0         0         1         0         0        -1         1         0         0         0         0         0         0         1
-s2               1         0         0         0         0         0         0         0         0         1         0         0         0         0         0         1
-s3               0         1         0         0         0         0         0         0         0         0         1         0         0         0         0         1
-s4               0         0         1         0         0         0         0         0         0         0         0         1         0         0         0         1
-s5               0         0         0         1         0         0         0         0         0         0         0         0         1         0         0         1
-s6               0         0         0         0         1         0         0         0         0         0         0         0         0         1         0         1
-s7               0         0         0         0         0         1         0         0         0         0         0         0         0         0         1         1
+Basis           x1        x2        x3        x4        x5        x6        x7        e1        a1        e2        a2        e3        a3        e4        a4        e5        a5        e6        a6       RHS
+a1              11         1         0         0         0         0         0        -1         1         0         0         0         0         0         0         0         0         0         0         2
+a2               8         0         1         0         0         0         0         0         0        -1         1         0         0         0         0         0         0         0         0         3
+a3               6         0         0         1         0         0         0         0         0         0         0        -1         1         0         0         0         0         0         0         3
+a4              14         0         0         0         1         0         0         0         0         0         0         0         0        -1         1         0         0         0         0         5
+a5              10         0         0         0         0         1         0         0         0         0         0         0         0         0         0        -1         1         0         0         2
+a6              10         0         0         0         0         0         1         0         0         0         0         0         0         0         0         0         0        -1         1         4
 
-Entering variable: x5   Leaving variable: a1   (pivot row c2, ratio = 1)
+Entering variable: x1   Leaving variable: a1   (pivot row c1, ratio = 0,182)
 
 --- Iteration 1 ---
-Basis           x1        x2        x3        x4        x5        x6        s1        e1        a1        s2        s3        s4        s5        s6        s7       RHS
-s1              11         8         6        14         0        10         1        10       -10         0         0         0         0         0         0        30
-x5               0         0         0         0         1         0         0        -1         1         0         0         0         0         0         0         1
-s2               1         0         0         0         0         0         0         0         0         1         0         0         0         0         0         1
-s3               0         1         0         0         0         0         0         0         0         0         1         0         0         0         0         1
-s4               0         0         1         0         0         0         0         0         0         0         0         1         0         0         0         1
-s5               0         0         0         1         0         0         0         0         0         0         0         0         1         0         0         1
-s6               0         0         0         0         0         0         0         1        -1         0         0         0         0         1         0         0
-s7               0         0         0         0         0         1         0         0         0         0         0         0         0         0         1         1
+Basis           x1        x2        x3        x4        x5        x6        x7        e1        a1        e2        a2        e3        a3        e4        a4        e5        a5        e6        a6       RHS
+x1               1     0,091         0         0         0         0         0    -0,091     0,091         0         0         0         0         0         0         0         0         0         0     0,182
+a2               0    -0,727         1         0         0         0         0     0,727    -0,727        -1         1         0         0         0         0         0         0         0         0     1,545
+a3               0    -0,545         0         1         0         0         0     0,545    -0,545         0         0        -1         1         0         0         0         0         0         0     1,909
+a4               0    -1,273         0         0         1         0         0     1,273    -1,273         0         0         0         0        -1         1         0         0         0         0     2,455
+a5               0    -0,909         0         0         0         1         0     0,909    -0,909         0         0         0         0         0         0        -1         1         0         0     0,182
+a6               0    -0,909         0         0         0         0         1     0,909    -0,909         0         0         0         0         0         0         0         0        -1         1     2,182
 
-Entering variable: x4   Leaving variable: s5   (pivot row c6, ratio = 1)
+Entering variable: e1   Leaving variable: a5   (pivot row c5, ratio = 0,2)
 
 --- Iteration 2 ---
-Basis           x1        x2        x3        x4        x5        x6        s1        e1        a1        s2        s3        s4        s5        s6        s7       RHS
-s1              11         8         6         0         0        10         1        10       -10         0         0         0       -14         0         0        16
-x5               0         0         0         0         1         0         0        -1         1         0         0         0         0         0         0         1
-s2               1         0         0         0         0         0         0         0         0         1         0         0         0         0         0         1
-s3               0         1         0         0         0         0         0         0         0         0         1         0         0         0         0         1
-s4               0         0         1         0         0         0         0         0         0         0         0         1         0         0         0         1
-x4               0         0         0         1         0         0         0         0         0         0         0         0         1         0         0         1
-s6               0         0         0         0         0         0         0         1        -1         0         0         0         0         1         0         0
-s7               0         0         0         0         0         1         0         0         0         0         0         0         0         0         1         1
+Basis           x1        x2        x3        x4        x5        x6        x7        e1        a1        e2        a2        e3        a3        e4        a4        e5        a5        e6        a6       RHS
+x1               1         0         0         0         0       0,1         0         0         0         0         0         0         0         0         0      -0,1       0,1         0         0       0,2
+a2               0         0         1         0         0      -0,8         0         0         0        -1         1         0         0         0         0       0,8      -0,8         0         0       1,4
+a3               0         0         0         1         0      -0,6         0         0         0         0         0        -1         1         0         0       0,6      -0,6         0         0       1,8
+a4               0         0         0         0         1      -1,4         0         0         0         0         0         0         0        -1         1       1,4      -1,4         0         0       2,2
+e1               0        -1         0         0         0       1,1         0         1        -1         0         0         0         0         0         0      -1,1       1,1         0         0       0,2
+a6               0         0         0         0         0        -1         1         0         0         0         0         0         0         0         0         1        -1        -1         1         2
 
-Entering variable: x6   Leaving variable: s7   (pivot row c8, ratio = 1)
+Entering variable: e5   Leaving variable: a4   (pivot row c4, ratio = 1,571)
 
 --- Iteration 3 ---
-Basis           x1        x2        x3        x4        x5        x6        s1        e1        a1        s2        s3        s4        s5        s6        s7       RHS
-s1              11         8         6         0         0         0         1        10       -10         0         0         0       -14         0       -10         6
-x5               0         0         0         0         1         0         0        -1         1         0         0         0         0         0         0         1
-s2               1         0         0         0         0         0         0         0         0         1         0         0         0         0         0         1
-s3               0         1         0         0         0         0         0         0         0         0         1         0         0         0         0         1
-s4               0         0         1         0         0         0         0         0         0         0         0         1         0         0         0         1
-x4               0         0         0         1         0         0         0         0         0         0         0         0         1         0         0         1
-s6               0         0         0         0         0         0         0         1        -1         0         0         0         0         1         0         0
-x6               0         0         0         0         0         1         0         0         0         0         0         0         0         0         1         1
+Basis           x1        x2        x3        x4        x5        x6        x7        e1        a1        e2        a2        e3        a3        e4        a4        e5        a5        e6        a6       RHS
+x1               1         0         0         0     0,071         0         0         0         0         0         0         0         0    -0,071     0,071         0         0         0         0     0,357
+a2               0         0         1         0    -0,571         0         0         0         0        -1         1         0         0     0,571    -0,571         0         0         0         0     0,143
+a3               0         0         0         1    -0,429         0         0         0         0         0         0        -1         1     0,429    -0,429         0         0         0         0     0,857
+e5               0         0         0         0     0,714        -1         0         0         0         0         0         0         0    -0,714     0,714         1        -1         0         0     1,571
+e1               0        -1         0         0     0,786         0         0         1        -1         0         0         0         0    -0,786     0,786         0         0         0         0     1,929
+a6               0         0         0         0    -0,714         0         1         0         0         0         0         0         0     0,714    -0,714         0         0        -1         1     0,429
 
-Entering variable: x2   Leaving variable: s1   (pivot row c1, ratio = 0,75)
+Entering variable: e4   Leaving variable: a2   (pivot row c2, ratio = 0,25)
 
 --- Iteration 4 ---
-Basis           x1        x2        x3        x4        x5        x6        s1        e1        a1        s2        s3        s4        s5        s6        s7       RHS
-x2           1,375         1      0,75         0         0         0     0,125      1,25     -1,25         0         0         0     -1,75         0     -1,25      0,75
-x5               0         0         0         0         1         0         0        -1         1         0         0         0         0         0         0         1
-s2               1         0         0         0         0         0         0         0         0         1         0         0         0         0         0         1
-s3          -1,375         0     -0,75         0         0         0    -0,125     -1,25      1,25         0         1         0      1,75         0      1,25      0,25
-s4               0         0         1         0         0         0         0         0         0         0         0         1         0         0         0         1
-x4               0         0         0         1         0         0         0         0         0         0         0         0         1         0         0         1
-s6               0         0         0         0         0         0         0         1        -1         0         0         0         0         1         0         0
-x6               0         0         0         0         0         1         0         0         0         0         0         0         0         0         1         1
+Basis           x1        x2        x3        x4        x5        x6        x7        e1        a1        e2        a2        e3        a3        e4        a4        e5        a5        e6        a6       RHS
+x1               1         0     0,125         0         0         0         0         0         0    -0,125     0,125         0         0         0         0         0         0         0         0     0,375
+e4               0         0      1,75         0        -1         0         0         0         0     -1,75      1,75         0         0         1        -1         0         0         0         0      0,25
+a3               0         0     -0,75         1         0         0         0         0         0      0,75     -0,75        -1         1         0         0         0         0         0         0      0,75
+e5               0         0      1,25         0         0        -1         0         0         0     -1,25      1,25         0         0         0         0         1        -1         0         0      1,75
+e1               0        -1     1,375         0         0         0         0         1        -1    -1,375     1,375         0         0         0         0         0         0         0         0     2,125
+a6               0         0     -1,25         0         0         0         1         0         0      1,25     -1,25         0         0         0         0         0         0        -1         1      0,25
 
-Entering variable: x3   Leaving variable: x2   (pivot row c1, ratio = 1)
+Entering variable: e2   Leaving variable: a6   (pivot row c6, ratio = 0,2)
 
 --- Iteration 5 ---
-Basis           x1        x2        x3        x4        x5        x6        s1        e1        a1        s2        s3        s4        s5        s6        s7       RHS
-x3           1,833     1,333         1         0         0         0     0,167     1,667    -1,667         0         0         0    -2,333         0    -1,667         1
-x5               0         0         0         0         1         0         0        -1         1         0         0         0         0         0         0         1
-s2               1         0         0         0         0         0         0         0         0         1         0         0         0         0         0         1
-s3               0         1         0         0         0         0         0         0         0         0         1         0         0         0         0         1
-s4          -1,833    -1,333         0         0         0         0    -0,167    -1,667     1,667         0         0         1     2,333         0     1,667         0
-x4               0         0         0         1         0         0         0         0         0         0         0         0         1         0         0         1
-s6               0         0         0         0         0         0         0         1        -1         0         0         0         0         1         0         0
-x6               0         0         0         0         0         1         0         0         0         0         0         0         0         0         1         1
+Basis           x1        x2        x3        x4        x5        x6        x7        e1        a1        e2        a2        e3        a3        e4        a4        e5        a5        e6        a6       RHS
+x1               1         0         0         0         0         0       0,1         0         0         0         0         0         0         0         0         0         0      -0,1       0,1       0,4
+e4               0         0         0         0        -1         0       1,4         0         0         0         0         0         0         1        -1         0         0      -1,4       1,4       0,6
+a3               0         0         0         1         0         0      -0,6         0         0         0         0        -1         1         0         0         0         0       0,6      -0,6       0,6
+e5               0         0         0         0         0        -1         1         0         0         0         0         0         0         0         0         1        -1        -1         1         2
+e1               0        -1         0         0         0         0       1,1         1        -1         0         0         0         0         0         0         0         0      -1,1       1,1       2,4
+e2               0         0        -1         0         0         0       0,8         0         0         1        -1         0         0         0         0         0         0      -0,8       0,8       0,2
 
-Entering variable: s5   Leaving variable: s4   (pivot row c5, ratio = 0)
+Entering variable: x4   Leaving variable: a3   (pivot row c3, ratio = 0,6)
 
 --- Iteration 6 ---
-Basis           x1        x2        x3        x4        x5        x6        s1        e1        a1        s2        s3        s4        s5        s6        s7       RHS
-x3               0         0         1         0         0         0         0         0         0         0         0         1         0         0         0         1
-x5               0         0         0         0         1         0         0        -1         1         0         0         0         0         0         0         1
-s2               1         0         0         0         0         0         0         0         0         1         0         0         0         0         0         1
-s3               0         1         0         0         0         0         0         0         0         0         1         0         0         0         0         1
-s5          -0,786    -0,571         0         0         0         0    -0,071    -0,714     0,714         0         0     0,429         1         0     0,714         0
-x4           0,786     0,571         0         1         0         0     0,071     0,714    -0,714         0         0    -0,429         0         0    -0,714         1
-s6               0         0         0         0         0         0         0         1        -1         0         0         0         0         1         0         0
-x6               0         0         0         0         0         1         0         0         0         0         0         0         0         0         1         1
+Basis           x1        x2        x3        x4        x5        x6        x7        e1        a1        e2        a2        e3        a3        e4        a4        e5        a5        e6        a6       RHS
+x1               1         0         0         0         0         0       0,1         0         0         0         0         0         0         0         0         0         0      -0,1       0,1       0,4
+e4               0         0         0         0        -1         0       1,4         0         0         0         0         0         0         1        -1         0         0      -1,4       1,4       0,6
+x4               0         0         0         1         0         0      -0,6         0         0         0         0        -1         1         0         0         0         0       0,6      -0,6       0,6
+e5               0         0         0         0         0        -1         1         0         0         0         0         0         0         0         0         1        -1        -1         1         2
+e1               0        -1         0         0         0         0       1,1         1        -1         0         0         0         0         0         0         0         0      -1,1       1,1       2,4
+e2               0         0        -1         0         0         0       0,8         0         0         1        -1         0         0         0         0         0         0      -0,8       0,8       0,2
 
-Entering variable: x2   Leaving variable: s3   (pivot row c4, ratio = 1)
+Entering variable: x7   Leaving variable: e2   (pivot row c6, ratio = 0,25)
 
 --- Iteration 7 ---
-Basis           x1        x2        x3        x4        x5        x6        s1        e1        a1        s2        s3        s4        s5        s6        s7       RHS
-x3               0         0         1         0         0         0         0         0         0         0         0         1         0         0         0         1
-x5               0         0         0         0         1         0         0        -1         1         0         0         0         0         0         0         1
-s2               1         0         0         0         0         0         0         0         0         1         0         0         0         0         0         1
-x2               0         1         0         0         0         0         0         0         0         0         1         0         0         0         0         1
-s5          -0,786         0         0         0         0         0    -0,071    -0,714     0,714         0     0,571     0,429         1         0     0,714     0,571
-x4           0,786         0         0         1         0         0     0,071     0,714    -0,714         0    -0,571    -0,429         0         0    -0,714     0,429
-s6               0         0         0         0         0         0         0         1        -1         0         0         0         0         1         0         0
-x6               0         0         0         0         0         1         0         0         0         0         0         0         0         0         1         1
+Basis           x1        x2        x3        x4        x5        x6        x7        e1        a1        e2        a2        e3        a3        e4        a4        e5        a5        e6        a6       RHS
+x1               1         0     0,125         0         0         0         0         0         0    -0,125     0,125         0         0         0         0         0         0         0         0     0,375
+e4               0         0      1,75         0        -1         0         0         0         0     -1,75      1,75         0         0         1        -1         0         0         0         0      0,25
+x4               0         0     -0,75         1         0         0         0         0         0      0,75     -0,75        -1         1         0         0         0         0         0         0      0,75
+e5               0         0      1,25         0         0        -1         0         0         0     -1,25      1,25         0         0         0         0         1        -1         0         0      1,75
+e1               0        -1     1,375         0         0         0         0         1        -1    -1,375     1,375         0         0         0         0         0         0         0         0     2,125
+x7               0         0     -1,25         0         0         0         1         0         0      1,25     -1,25         0         0         0         0         0         0        -1         1      0,25
 
-Optimality reached: all (z_j - c_j) >= 0.
-
---- Optimal Solution ---
-x1 = 0
-x2 = 1
-x3 = 1
-x4 = 0,429
-x5 = 1
-x6 = 1
-Optimal objective value (max) = 14,143
-Status: Fractional on x4 = 0,429, Branching
-
-=======================================
-Sub-problem: 4 (parent: 2):  x4 >= 1
-=======================================
-========================================================
-           PRIMAL SIMPLEX ALGORITHM (Big-M method)        
-========================================================
-
-Note: x1 is binary -> added implicit bound x1 <= 1 for the LP relaxation.
-Note: x2 is binary -> added implicit bound x2 <= 1 for the LP relaxation.
-Note: x3 is binary -> added implicit bound x3 <= 1 for the LP relaxation.
-Note: x4 is binary -> added implicit bound x4 <= 1 for the LP relaxation.
-Note: x5 is binary -> added implicit bound x5 <= 1 for the LP relaxation.
-Note: x6 is binary -> added implicit bound x6 <= 1 for the LP relaxation.
-
---- Canonical Form ---
-Maximize Z =  +2x1 +3x2 +3x3 +5x4 +2x5 +4x6
-  c1: +11x1 +8x2 +6x3 +14x4 +10x5 +10x6 +1s1 = 40
-  c2: +1x5 -1e1 +1a1 = 1
-  c3: +1x4 -1e2 +1a2 = 1
-  c4: +1x1 +1s2 = 1
-  c5: +1x2 +1s3 = 1
-  c6: +1x3 +1s4 = 1
-  c7: +1x4 +1s5 = 1
-  c8: +1x5 +1s6 = 1
-  c9: +1x6 +1s7 = 1
-
---- Iteration 0 (Initial Tableau) ---
-Basis           x1        x2        x3        x4        x5        x6        s1        e1        a1        e2        a2        s2        s3        s4        s5        s6        s7       RHS
-s1              11         8         6        14        10        10         1         0         0         0         0         0         0         0         0         0         0        40
-a1               0         0         0         0         1         0         0        -1         1         0         0         0         0         0         0         0         0         1
-a2               0         0         0         1         0         0         0         0         0        -1         1         0         0         0         0         0         0         1
-s2               1         0         0         0         0         0         0         0         0         0         0         1         0         0         0         0         0         1
-s3               0         1         0         0         0         0         0         0         0         0         0         0         1         0         0         0         0         1
-s4               0         0         1         0         0         0         0         0         0         0         0         0         0         1         0         0         0         1
-s5               0         0         0         1         0         0         0         0         0         0         0         0         0         0         1         0         0         1
-s6               0         0         0         0         1         0         0         0         0         0         0         0         0         0         0         1         0         1
-s7               0         0         0         0         0         1         0         0         0         0         0         0         0         0         0         0         1         1
-
-Entering variable: x4   Leaving variable: a2   (pivot row c3, ratio = 1)
-
---- Iteration 1 ---
-Basis           x1        x2        x3        x4        x5        x6        s1        e1        a1        e2        a2        s2        s3        s4        s5        s6        s7       RHS
-s1              11         8         6         0        10        10         1         0         0        14       -14         0         0         0         0         0         0        26
-a1               0         0         0         0         1         0         0        -1         1         0         0         0         0         0         0         0         0         1
-x4               0         0         0         1         0         0         0         0         0        -1         1         0         0         0         0         0         0         1
-s2               1         0         0         0         0         0         0         0         0         0         0         1         0         0         0         0         0         1
-s3               0         1         0         0         0         0         0         0         0         0         0         0         1         0         0         0         0         1
-s4               0         0         1         0         0         0         0         0         0         0         0         0         0         1         0         0         0         1
-s5               0         0         0         0         0         0         0         0         0         1        -1         0         0         0         1         0         0         0
-s6               0         0         0         0         1         0         0         0         0         0         0         0         0         0         0         1         0         1
-s7               0         0         0         0         0         1         0         0         0         0         0         0         0         0         0         0         1         1
-
-Entering variable: x5   Leaving variable: a1   (pivot row c2, ratio = 1)
-
---- Iteration 2 ---
-Basis           x1        x2        x3        x4        x5        x6        s1        e1        a1        e2        a2        s2        s3        s4        s5        s6        s7       RHS
-s1              11         8         6         0         0        10         1        10       -10        14       -14         0         0         0         0         0         0        16
-x5               0         0         0         0         1         0         0        -1         1         0         0         0         0         0         0         0         0         1
-x4               0         0         0         1         0         0         0         0         0        -1         1         0         0         0         0         0         0         1
-s2               1         0         0         0         0         0         0         0         0         0         0         1         0         0         0         0         0         1
-s3               0         1         0         0         0         0         0         0         0         0         0         0         1         0         0         0         0         1
-s4               0         0         1         0         0         0         0         0         0         0         0         0         0         1         0         0         0         1
-s5               0         0         0         0         0         0         0         0         0         1        -1         0         0         0         1         0         0         0
-s6               0         0         0         0         0         0         0         1        -1         0         0         0         0         0         0         1         0         0
-s7               0         0         0         0         0         1         0         0         0         0         0         0         0         0         0         0         1         1
-
-Entering variable: e2   Leaving variable: s5   (pivot row c7, ratio = 0)
-
---- Iteration 3 ---
-Basis           x1        x2        x3        x4        x5        x6        s1        e1        a1        e2        a2        s2        s3        s4        s5        s6        s7       RHS
-s1              11         8         6         0         0        10         1        10       -10         0         0         0         0         0       -14         0         0        16
-x5               0         0         0         0         1         0         0        -1         1         0         0         0         0         0         0         0         0         1
-x4               0         0         0         1         0         0         0         0         0         0         0         0         0         0         1         0         0         1
-s2               1         0         0         0         0         0         0         0         0         0         0         1         0         0         0         0         0         1
-s3               0         1         0         0         0         0         0         0         0         0         0         0         1         0         0         0         0         1
-s4               0         0         1         0         0         0         0         0         0         0         0         0         0         1         0         0         0         1
-e2               0         0         0         0         0         0         0         0         0         1        -1         0         0         0         1         0         0         0
-s6               0         0         0         0         0         0         0         1        -1         0         0         0         0         0         0         1         0         0
-s7               0         0         0         0         0         1         0         0         0         0         0         0         0         0         0         0         1         1
-
-Entering variable: x6   Leaving variable: s7   (pivot row c9, ratio = 1)
-
---- Iteration 4 ---
-Basis           x1        x2        x3        x4        x5        x6        s1        e1        a1        e2        a2        s2        s3        s4        s5        s6        s7       RHS
-s1              11         8         6         0         0         0         1        10       -10         0         0         0         0         0       -14         0       -10         6
-x5               0         0         0         0         1         0         0        -1         1         0         0         0         0         0         0         0         0         1
-x4               0         0         0         1         0         0         0         0         0         0         0         0         0         0         1         0         0         1
-s2               1         0         0         0         0         0         0         0         0         0         0         1         0         0         0         0         0         1
-s3               0         1         0         0         0         0         0         0         0         0         0         0         1         0         0         0         0         1
-s4               0         0         1         0         0         0         0         0         0         0         0         0         0         1         0         0         0         1
-e2               0         0         0         0         0         0         0         0         0         1        -1         0         0         0         1         0         0         0
-s6               0         0         0         0         0         0         0         1        -1         0         0         0         0         0         0         1         0         0
-x6               0         0         0         0         0         1         0         0         0         0         0         0         0         0         0         0         1         1
-
-Entering variable: x2   Leaving variable: s1   (pivot row c1, ratio = 0,75)
-
---- Iteration 5 ---
-Basis           x1        x2        x3        x4        x5        x6        s1        e1        a1        e2        a2        s2        s3        s4        s5        s6        s7       RHS
-x2           1,375         1      0,75         0         0         0     0,125      1,25     -1,25         0         0         0         0         0     -1,75         0     -1,25      0,75
-x5               0         0         0         0         1         0         0        -1         1         0         0         0         0         0         0         0         0         1
-x4               0         0         0         1         0         0         0         0         0         0         0         0         0         0         1         0         0         1
-s2               1         0         0         0         0         0         0         0         0         0         0         1         0         0         0         0         0         1
-s3          -1,375         0     -0,75         0         0         0    -0,125     -1,25      1,25         0         0         0         1         0      1,75         0      1,25      0,25
-s4               0         0         1         0         0         0         0         0         0         0         0         0         0         1         0         0         0         1
-e2               0         0         0         0         0         0         0         0         0         1        -1         0         0         0         1         0         0         0
-s6               0         0         0         0         0         0         0         1        -1         0         0         0         0         0         0         1         0         0
-x6               0         0         0         0         0         1         0         0         0         0         0         0         0         0         0         0         1         1
-
-Entering variable: x3   Leaving variable: x2   (pivot row c1, ratio = 1)
-
---- Iteration 6 ---
-Basis           x1        x2        x3        x4        x5        x6        s1        e1        a1        e2        a2        s2        s3        s4        s5        s6        s7       RHS
-x3           1,833     1,333         1         0         0         0     0,167     1,667    -1,667         0         0         0         0         0    -2,333         0    -1,667         1
-x5               0         0         0         0         1         0         0        -1         1         0         0         0         0         0         0         0         0         1
-x4               0         0         0         1         0         0         0         0         0         0         0         0         0         0         1         0         0         1
-s2               1         0         0         0         0         0         0         0         0         0         0         1         0         0         0         0         0         1
-s3               0         1         0         0         0         0         0         0         0         0         0         0         1         0         0         0         0         1
-s4          -1,833    -1,333         0         0         0         0    -0,167    -1,667     1,667         0         0         0         0         1     2,333         0     1,667         0
-e2               0         0         0         0         0         0         0         0         0         1        -1         0         0         0         1         0         0         0
-s6               0         0         0         0         0         0         0         1        -1         0         0         0         0         0         0         1         0         0
-x6               0         0         0         0         0         1         0         0         0         0         0         0         0         0         0         0         1         1
-
-Entering variable: s5   Leaving variable: e2   (pivot row c7, ratio = 0)
-
---- Iteration 7 ---
-Basis           x1        x2        x3        x4        x5        x6        s1        e1        a1        e2        a2        s2        s3        s4        s5        s6        s7       RHS
-x3           1,833     1,333         1         0         0         0     0,167     1,667    -1,667     2,333    -2,333         0         0         0         0         0    -1,667         1
-x5               0         0         0         0         1         0         0        -1         1         0         0         0         0         0         0         0         0         1
-x4               0         0         0         1         0         0         0         0         0        -1         1         0         0         0         0         0         0         1
-s2               1         0         0         0         0         0         0         0         0         0         0         1         0         0         0         0         0         1
-s3               0         1         0         0         0         0         0         0         0         0         0         0         1         0         0         0         0         1
-s4          -1,833    -1,333         0         0         0         0    -0,167    -1,667     1,667    -2,333     2,333         0         0         1         0         0     1,667         0
-s5               0         0         0         0         0         0         0         0         0         1        -1         0         0         0         1         0         0         0
-s6               0         0         0         0         0         0         0         1        -1         0         0         0         0         0         0         1         0         0
-x6               0         0         0         0         0         1         0         0         0         0         0         0         0         0         0         0         1         1
-
-Entering variable: s7   Leaving variable: s4   (pivot row c6, ratio = 0)
+Entering variable: x3   Leaving variable: e4   (pivot row c2, ratio = 0,143)
 
 --- Iteration 8 ---
-Basis           x1        x2        x3        x4        x5        x6        s1        e1        a1        e2        a2        s2        s3        s4        s5        s6        s7       RHS
-x3               0         0         1         0         0         0         0         0         0         0         0         0         0         1         0         0         0         1
-x5               0         0         0         0         1         0         0        -1         1         0         0         0         0         0         0         0         0         1
-x4               0         0         0         1         0         0         0         0         0        -1         1         0         0         0         0         0         0         1
-s2               1         0         0         0         0         0         0         0         0         0         0         1         0         0         0         0         0         1
-s3               0         1         0         0         0         0         0         0         0         0         0         0         1         0         0         0         0         1
-s7            -1,1      -0,8         0         0         0         0      -0,1        -1         1      -1,4       1,4         0         0       0,6         0         0         1         0
-s5               0         0         0         0         0         0         0         0         0         1        -1         0         0         0         1         0         0         0
-s6               0         0         0         0         0         0         0         1        -1         0         0         0         0         0         0         1         0         0
-x6             1,1       0,8         0         0         0         1       0,1         1        -1       1,4      -1,4         0         0      -0,6         0         0         0         1
+Basis           x1        x2        x3        x4        x5        x6        x7        e1        a1        e2        a2        e3        a3        e4        a4        e5        a5        e6        a6       RHS
+x1               1         0         0         0     0,071         0         0         0         0         0         0         0         0    -0,071     0,071         0         0         0         0     0,357
+x3               0         0         1         0    -0,571         0         0         0         0        -1         1         0         0     0,571    -0,571         0         0         0         0     0,143
+x4               0         0         0         1    -0,429         0         0         0         0         0         0        -1         1     0,429    -0,429         0         0         0         0     0,857
+e5               0         0         0         0     0,714        -1         0         0         0         0         0         0         0    -0,714     0,714         1        -1         0         0     1,571
+e1               0        -1         0         0     0,786         0         0         1        -1         0         0         0         0    -0,786     0,786         0         0         0         0     1,929
+x7               0         0         0         0    -0,714         0         1         0         0         0         0         0         0     0,714    -0,714         0         0        -1         1     0,429
+
+Entering variable: x5   Leaving variable: e5   (pivot row c4, ratio = 2,2)
+
+--- Iteration 9 ---
+Basis           x1        x2        x3        x4        x5        x6        x7        e1        a1        e2        a2        e3        a3        e4        a4        e5        a5        e6        a6       RHS
+x1               1         0         0         0         0       0,1         0         0         0         0         0         0         0         0         0      -0,1       0,1         0         0       0,2
+x3               0         0         1         0         0      -0,8         0         0         0        -1         1         0         0         0         0       0,8      -0,8         0         0       1,4
+x4               0         0         0         1         0      -0,6         0         0         0         0         0        -1         1         0         0       0,6      -0,6         0         0       1,8
+x5               0         0         0         0         1      -1,4         0         0         0         0         0         0         0        -1         1       1,4      -1,4         0         0       2,2
+e1               0        -1         0         0         0       1,1         0         1        -1         0         0         0         0         0         0      -1,1       1,1         0         0       0,2
+x7               0         0         0         0         0        -1         1         0         0         0         0         0         0         0         0         1        -1        -1         1         2
 
 Optimality reached: all (z_j - c_j) >= 0.
 
 --- Optimal Solution ---
-x1 = 0
+x1 = 0,2
 x2 = 0
-x3 = 1
-x4 = 1
-x5 = 1
-x6 = 1
-Optimal objective value (max) = 14
-Status: INTEGER-FEASIBLE, Candidate Solution
-
-=======================================
-Sub-problem: 3 (parent: 2):  x4 <= 0
-=======================================
-========================================================
-           PRIMAL SIMPLEX ALGORITHM (Big-M method)        
-========================================================
-
-Note: x1 is binary -> added implicit bound x1 <= 1 for the LP relaxation.
-Note: x2 is binary -> added implicit bound x2 <= 1 for the LP relaxation.
-Note: x3 is binary -> added implicit bound x3 <= 1 for the LP relaxation.
-Note: x4 is binary -> added implicit bound x4 <= 1 for the LP relaxation.
-Note: x5 is binary -> added implicit bound x5 <= 1 for the LP relaxation.
-Note: x6 is binary -> added implicit bound x6 <= 1 for the LP relaxation.
-
---- Canonical Form ---
-Maximize Z =  +2x1 +3x2 +3x3 +5x4 +2x5 +4x6
-  c1: +11x1 +8x2 +6x3 +14x4 +10x5 +10x6 +1s1 = 40
-  c2: +1x5 -1e1 +1a1 = 1
-  c3: +1x4 +1s2 = 0
-  c4: +1x1 +1s3 = 1
-  c5: +1x2 +1s4 = 1
-  c6: +1x3 +1s5 = 1
-  c7: +1x4 +1s6 = 1
-  c8: +1x5 +1s7 = 1
-  c9: +1x6 +1s8 = 1
-
---- Iteration 0 (Initial Tableau) ---
-Basis           x1        x2        x3        x4        x5        x6        s1        e1        a1        s2        s3        s4        s5        s6        s7        s8       RHS
-s1              11         8         6        14        10        10         1         0         0         0         0         0         0         0         0         0        40
-a1               0         0         0         0         1         0         0        -1         1         0         0         0         0         0         0         0         1
-s2               0         0         0         1         0         0         0         0         0         1         0         0         0         0         0         0         0
-s3               1         0         0         0         0         0         0         0         0         0         1         0         0         0         0         0         1
-s4               0         1         0         0         0         0         0         0         0         0         0         1         0         0         0         0         1
-s5               0         0         1         0         0         0         0         0         0         0         0         0         1         0         0         0         1
-s6               0         0         0         1         0         0         0         0         0         0         0         0         0         1         0         0         1
-s7               0         0         0         0         1         0         0         0         0         0         0         0         0         0         1         0         1
-s8               0         0         0         0         0         1         0         0         0         0         0         0         0         0         0         1         1
-
-Entering variable: x5   Leaving variable: a1   (pivot row c2, ratio = 1)
-
---- Iteration 1 ---
-Basis           x1        x2        x3        x4        x5        x6        s1        e1        a1        s2        s3        s4        s5        s6        s7        s8       RHS
-s1              11         8         6        14         0        10         1        10       -10         0         0         0         0         0         0         0        30
-x5               0         0         0         0         1         0         0        -1         1         0         0         0         0         0         0         0         1
-s2               0         0         0         1         0         0         0         0         0         1         0         0         0         0         0         0         0
-s3               1         0         0         0         0         0         0         0         0         0         1         0         0         0         0         0         1
-s4               0         1         0         0         0         0         0         0         0         0         0         1         0         0         0         0         1
-s5               0         0         1         0         0         0         0         0         0         0         0         0         1         0         0         0         1
-s6               0         0         0         1         0         0         0         0         0         0         0         0         0         1         0         0         1
-s7               0         0         0         0         0         0         0         1        -1         0         0         0         0         0         1         0         0
-s8               0         0         0         0         0         1         0         0         0         0         0         0         0         0         0         1         1
-
-Entering variable: x4   Leaving variable: s2   (pivot row c3, ratio = 0)
-
---- Iteration 2 ---
-Basis           x1        x2        x3        x4        x5        x6        s1        e1        a1        s2        s3        s4        s5        s6        s7        s8       RHS
-s1              11         8         6         0         0        10         1        10       -10       -14         0         0         0         0         0         0        30
-x5               0         0         0         0         1         0         0        -1         1         0         0         0         0         0         0         0         1
-x4               0         0         0         1         0         0         0         0         0         1         0         0         0         0         0         0         0
-s3               1         0         0         0         0         0         0         0         0         0         1         0         0         0         0         0         1
-s4               0         1         0         0         0         0         0         0         0         0         0         1         0         0         0         0         1
-s5               0         0         1         0         0         0         0         0         0         0         0         0         1         0         0         0         1
-s6               0         0         0         0         0         0         0         0         0        -1         0         0         0         1         0         0         1
-s7               0         0         0         0         0         0         0         1        -1         0         0         0         0         0         1         0         0
-s8               0         0         0         0         0         1         0         0         0         0         0         0         0         0         0         1         1
-
-Entering variable: x6   Leaving variable: s8   (pivot row c9, ratio = 1)
-
---- Iteration 3 ---
-Basis           x1        x2        x3        x4        x5        x6        s1        e1        a1        s2        s3        s4        s5        s6        s7        s8       RHS
-s1              11         8         6         0         0         0         1        10       -10       -14         0         0         0         0         0       -10        20
-x5               0         0         0         0         1         0         0        -1         1         0         0         0         0         0         0         0         1
-x4               0         0         0         1         0         0         0         0         0         1         0         0         0         0         0         0         0
-s3               1         0         0         0         0         0         0         0         0         0         1         0         0         0         0         0         1
-s4               0         1         0         0         0         0         0         0         0         0         0         1         0         0         0         0         1
-s5               0         0         1         0         0         0         0         0         0         0         0         0         1         0         0         0         1
-s6               0         0         0         0         0         0         0         0         0        -1         0         0         0         1         0         0         1
-s7               0         0         0         0         0         0         0         1        -1         0         0         0         0         0         1         0         0
-x6               0         0         0         0         0         1         0         0         0         0         0         0         0         0         0         1         1
-
-Entering variable: x2   Leaving variable: s4   (pivot row c5, ratio = 1)
-
---- Iteration 4 ---
-Basis           x1        x2        x3        x4        x5        x6        s1        e1        a1        s2        s3        s4        s5        s6        s7        s8       RHS
-s1              11         0         6         0         0         0         1        10       -10       -14         0        -8         0         0         0       -10        12
-x5               0         0         0         0         1         0         0        -1         1         0         0         0         0         0         0         0         1
-x4               0         0         0         1         0         0         0         0         0         1         0         0         0         0         0         0         0
-s3               1         0         0         0         0         0         0         0         0         0         1         0         0         0         0         0         1
-x2               0         1         0         0         0         0         0         0         0         0         0         1         0         0         0         0         1
-s5               0         0         1         0         0         0         0         0         0         0         0         0         1         0         0         0         1
-s6               0         0         0         0         0         0         0         0         0        -1         0         0         0         1         0         0         1
-s7               0         0         0         0         0         0         0         1        -1         0         0         0         0         0         1         0         0
-x6               0         0         0         0         0         1         0         0         0         0         0         0         0         0         0         1         1
-
-Entering variable: x3   Leaving variable: s5   (pivot row c6, ratio = 1)
-
---- Iteration 5 ---
-Basis           x1        x2        x3        x4        x5        x6        s1        e1        a1        s2        s3        s4        s5        s6        s7        s8       RHS
-s1              11         0         0         0         0         0         1        10       -10       -14         0        -8        -6         0         0       -10         6
-x5               0         0         0         0         1         0         0        -1         1         0         0         0         0         0         0         0         1
-x4               0         0         0         1         0         0         0         0         0         1         0         0         0         0         0         0         0
-s3               1         0         0         0         0         0         0         0         0         0         1         0         0         0         0         0         1
-x2               0         1         0         0         0         0         0         0         0         0         0         1         0         0         0         0         1
-x3               0         0         1         0         0         0         0         0         0         0         0         0         1         0         0         0         1
-s6               0         0         0         0         0         0         0         0         0        -1         0         0         0         1         0         0         1
-s7               0         0         0         0         0         0         0         1        -1         0         0         0         0         0         1         0         0
-x6               0         0         0         0         0         1         0         0         0         0         0         0         0         0         0         1         1
-
-Entering variable: x1   Leaving variable: s1   (pivot row c1, ratio = 0,545)
-
---- Iteration 6 ---
-Basis           x1        x2        x3        x4        x5        x6        s1        e1        a1        s2        s3        s4        s5        s6        s7        s8       RHS
-x1               1         0         0         0         0         0     0,091     0,909    -0,909    -1,273         0    -0,727    -0,545         0         0    -0,909     0,545
-x5               0         0         0         0         1         0         0        -1         1         0         0         0         0         0         0         0         1
-x4               0         0         0         1         0         0         0         0         0         1         0         0         0         0         0         0         0
-s3               0         0         0         0         0         0    -0,091    -0,909     0,909     1,273         1     0,727     0,545         0         0     0,909     0,455
-x2               0         1         0         0         0         0         0         0         0         0         0         1         0         0         0         0         1
-x3               0         0         1         0         0         0         0         0         0         0         0         0         1         0         0         0         1
-s6               0         0         0         0         0         0         0         0         0        -1         0         0         0         1         0         0         1
-s7               0         0         0         0         0         0         0         1        -1         0         0         0         0         0         1         0         0
-x6               0         0         0         0         0         1         0         0         0         0         0         0         0         0         0         1         1
-
-Entering variable: e1   Leaving variable: s7   (pivot row c8, ratio = 0)
-
---- Iteration 7 ---
-Basis           x1        x2        x3        x4        x5        x6        s1        e1        a1        s2        s3        s4        s5        s6        s7        s8       RHS
-x1               1         0         0         0         0         0     0,091         0         0    -1,273         0    -0,727    -0,545         0    -0,909    -0,909     0,545
-x5               0         0         0         0         1         0         0         0         0         0         0         0         0         0         1         0         1
-x4               0         0         0         1         0         0         0         0         0         1         0         0         0         0         0         0         0
-s3               0         0         0         0         0         0    -0,091         0         0     1,273         1     0,727     0,545         0     0,909     0,909     0,455
-x2               0         1         0         0         0         0         0         0         0         0         0         1         0         0         0         0         1
-x3               0         0         1         0         0         0         0         0         0         0         0         0         1         0         0         0         1
-s6               0         0         0         0         0         0         0         0         0        -1         0         0         0         1         0         0         1
-e1               0         0         0         0         0         0         0         1        -1         0         0         0         0         0         1         0         0
-x6               0         0         0         0         0         1         0         0         0         0         0         0         0         0         0         1         1
-
-Optimality reached: all (z_j - c_j) >= 0.
-
---- Optimal Solution ---
-x1 = 0,545
-x2 = 1
-x3 = 1
-x4 = 0
-x5 = 1
-x6 = 1
-Optimal objective value (max) = 13,091
-Status: BOUNDED ( z = 13,091 cannot beat the current best. ), Pruned.
-
-=======================================
-Sub-problem: 1 (parent: 0):  x5 <= 0
-=======================================
-========================================================
-           PRIMAL SIMPLEX ALGORITHM (Big-M method)        
-========================================================
-
-Note: x1 is binary -> added implicit bound x1 <= 1 for the LP relaxation.
-Note: x2 is binary -> added implicit bound x2 <= 1 for the LP relaxation.
-Note: x3 is binary -> added implicit bound x3 <= 1 for the LP relaxation.
-Note: x4 is binary -> added implicit bound x4 <= 1 for the LP relaxation.
-Note: x5 is binary -> added implicit bound x5 <= 1 for the LP relaxation.
-Note: x6 is binary -> added implicit bound x6 <= 1 for the LP relaxation.
-
---- Canonical Form ---
-Maximize Z =  +2x1 +3x2 +3x3 +5x4 +2x5 +4x6
-  c1: +11x1 +8x2 +6x3 +14x4 +10x5 +10x6 +1s1 = 40
-  c2: +1x5 +1s2 = 0
-  c3: +1x1 +1s3 = 1
-  c4: +1x2 +1s4 = 1
-  c5: +1x3 +1s5 = 1
-  c6: +1x4 +1s6 = 1
-  c7: +1x5 +1s7 = 1
-  c8: +1x6 +1s8 = 1
-
---- Iteration 0 (Initial Tableau) ---
-Basis           x1        x2        x3        x4        x5        x6        s1        s2        s3        s4        s5        s6        s7        s8       RHS
-s1              11         8         6        14        10        10         1         0         0         0         0         0         0         0        40
-s2               0         0         0         0         1         0         0         1         0         0         0         0         0         0         0
-s3               1         0         0         0         0         0         0         0         1         0         0         0         0         0         1
-s4               0         1         0         0         0         0         0         0         0         1         0         0         0         0         1
-s5               0         0         1         0         0         0         0         0         0         0         1         0         0         0         1
-s6               0         0         0         1         0         0         0         0         0         0         0         1         0         0         1
-s7               0         0         0         0         1         0         0         0         0         0         0         0         1         0         1
-s8               0         0         0         0         0         1         0         0         0         0         0         0         0         1         1
-
-Entering variable: x4   Leaving variable: s6   (pivot row c6, ratio = 1)
-
---- Iteration 1 ---
-Basis           x1        x2        x3        x4        x5        x6        s1        s2        s3        s4        s5        s6        s7        s8       RHS
-s1              11         8         6         0        10        10         1         0         0         0         0       -14         0         0        26
-s2               0         0         0         0         1         0         0         1         0         0         0         0         0         0         0
-s3               1         0         0         0         0         0         0         0         1         0         0         0         0         0         1
-s4               0         1         0         0         0         0         0         0         0         1         0         0         0         0         1
-s5               0         0         1         0         0         0         0         0         0         0         1         0         0         0         1
-x4               0         0         0         1         0         0         0         0         0         0         0         1         0         0         1
-s7               0         0         0         0         1         0         0         0         0         0         0         0         1         0         1
-s8               0         0         0         0         0         1         0         0         0         0         0         0         0         1         1
-
-Entering variable: x6   Leaving variable: s8   (pivot row c8, ratio = 1)
-
---- Iteration 2 ---
-Basis           x1        x2        x3        x4        x5        x6        s1        s2        s3        s4        s5        s6        s7        s8       RHS
-s1              11         8         6         0        10         0         1         0         0         0         0       -14         0       -10        16
-s2               0         0         0         0         1         0         0         1         0         0         0         0         0         0         0
-s3               1         0         0         0         0         0         0         0         1         0         0         0         0         0         1
-s4               0         1         0         0         0         0         0         0         0         1         0         0         0         0         1
-s5               0         0         1         0         0         0         0         0         0         0         1         0         0         0         1
-x4               0         0         0         1         0         0         0         0         0         0         0         1         0         0         1
-s7               0         0         0         0         1         0         0         0         0         0         0         0         1         0         1
-x6               0         0         0         0         0         1         0         0         0         0         0         0         0         1         1
-
-Entering variable: x2   Leaving variable: s4   (pivot row c4, ratio = 1)
-
---- Iteration 3 ---
-Basis           x1        x2        x3        x4        x5        x6        s1        s2        s3        s4        s5        s6        s7        s8       RHS
-s1              11         0         6         0        10         0         1         0         0        -8         0       -14         0       -10         8
-s2               0         0         0         0         1         0         0         1         0         0         0         0         0         0         0
-s3               1         0         0         0         0         0         0         0         1         0         0         0         0         0         1
-x2               0         1         0         0         0         0         0         0         0         1         0         0         0         0         1
-s5               0         0         1         0         0         0         0         0         0         0         1         0         0         0         1
-x4               0         0         0         1         0         0         0         0         0         0         0         1         0         0         1
-s7               0         0         0         0         1         0         0         0         0         0         0         0         1         0         1
-x6               0         0         0         0         0         1         0         0         0         0         0         0         0         1         1
-
-Entering variable: x3   Leaving variable: s5   (pivot row c5, ratio = 1)
-
---- Iteration 4 ---
-Basis           x1        x2        x3        x4        x5        x6        s1        s2        s3        s4        s5        s6        s7        s8       RHS
-s1              11         0         0         0        10         0         1         0         0        -8        -6       -14         0       -10         2
-s2               0         0         0         0         1         0         0         1         0         0         0         0         0         0         0
-s3               1         0         0         0         0         0         0         0         1         0         0         0         0         0         1
-x2               0         1         0         0         0         0         0         0         0         1         0         0         0         0         1
-x3               0         0         1         0         0         0         0         0         0         0         1         0         0         0         1
-x4               0         0         0         1         0         0         0         0         0         0         0         1         0         0         1
-s7               0         0         0         0         1         0         0         0         0         0         0         0         1         0         1
-x6               0         0         0         0         0         1         0         0         0         0         0         0         0         1         1
-
-Entering variable: x1   Leaving variable: s1   (pivot row c1, ratio = 0,182)
-
---- Iteration 5 ---
-Basis           x1        x2        x3        x4        x5        x6        s1        s2        s3        s4        s5        s6        s7        s8       RHS
-x1               1         0         0         0     0,909         0     0,091         0         0    -0,727    -0,545    -1,273         0    -0,909     0,182
-s2               0         0         0         0         1         0         0         1         0         0         0         0         0         0         0
-s3               0         0         0         0    -0,909         0    -0,091         0         1     0,727     0,545     1,273         0     0,909     0,818
-x2               0         1         0         0         0         0         0         0         0         1         0         0         0         0         1
-x3               0         0         1         0         0         0         0         0         0         0         1         0         0         0         1
-x4               0         0         0         1         0         0         0         0         0         0         0         1         0         0         1
-s7               0         0         0         0         1         0         0         0         0         0         0         0         1         0         1
-x6               0         0         0         0         0         1         0         0         0         0         0         0         0         1         1
-
-Entering variable: x5   Leaving variable: s2   (pivot row c2, ratio = 0)
-
---- Iteration 6 ---
-Basis           x1        x2        x3        x4        x5        x6        s1        s2        s3        s4        s5        s6        s7        s8       RHS
-x1               1         0         0         0         0         0     0,091    -0,909         0    -0,727    -0,545    -1,273         0    -0,909     0,182
-x5               0         0         0         0         1         0         0         1         0         0         0         0         0         0         0
-s3               0         0         0         0         0         0    -0,091     0,909         1     0,727     0,545     1,273         0     0,909     0,818
-x2               0         1         0         0         0         0         0         0         0         1         0         0         0         0         1
-x3               0         0         1         0         0         0         0         0         0         0         1         0         0         0         1
-x4               0         0         0         1         0         0         0         0         0         0         0         1         0         0         1
-s7               0         0         0         0         0         0         0        -1         0         0         0         0         1         0         1
-x6               0         0         0         0         0         1         0         0         0         0         0         0         0         1         1
-
-Optimality reached: all (z_j - c_j) >= 0.
-
---- Optimal Solution ---
-x1 = 0,182
-x2 = 1
-x3 = 1
-x4 = 1
-x5 = 0
-x6 = 1
-Optimal objective value (max) = 15,364
-Status: Fractional on x1 = 0,182, Branching
-
-=======================================
-Sub-problem: 6 (parent: 1):  x1 >= 1
-=======================================
-========================================================
-           PRIMAL SIMPLEX ALGORITHM (Big-M method)        
-========================================================
-
-Note: x1 is binary -> added implicit bound x1 <= 1 for the LP relaxation.
-Note: x2 is binary -> added implicit bound x2 <= 1 for the LP relaxation.
-Note: x3 is binary -> added implicit bound x3 <= 1 for the LP relaxation.
-Note: x4 is binary -> added implicit bound x4 <= 1 for the LP relaxation.
-Note: x5 is binary -> added implicit bound x5 <= 1 for the LP relaxation.
-Note: x6 is binary -> added implicit bound x6 <= 1 for the LP relaxation.
-
---- Canonical Form ---
-Maximize Z =  +2x1 +3x2 +3x3 +5x4 +2x5 +4x6
-  c1: +11x1 +8x2 +6x3 +14x4 +10x5 +10x6 +1s1 = 40
-  c2: +1x5 +1s2 = 0
-  c3: +1x1 -1e1 +1a1 = 1
-  c4: +1x1 +1s3 = 1
-  c5: +1x2 +1s4 = 1
-  c6: +1x3 +1s5 = 1
-  c7: +1x4 +1s6 = 1
-  c8: +1x5 +1s7 = 1
-  c9: +1x6 +1s8 = 1
-
---- Iteration 0 (Initial Tableau) ---
-Basis           x1        x2        x3        x4        x5        x6        s1        s2        e1        a1        s3        s4        s5        s6        s7        s8       RHS
-s1              11         8         6        14        10        10         1         0         0         0         0         0         0         0         0         0        40
-s2               0         0         0         0         1         0         0         1         0         0         0         0         0         0         0         0         0
-a1               1         0         0         0         0         0         0         0        -1         1         0         0         0         0         0         0         1
-s3               1         0         0         0         0         0         0         0         0         0         1         0         0         0         0         0         1
-s4               0         1         0         0         0         0         0         0         0         0         0         1         0         0         0         0         1
-s5               0         0         1         0         0         0         0         0         0         0         0         0         1         0         0         0         1
-s6               0         0         0         1         0         0         0         0         0         0         0         0         0         1         0         0         1
-s7               0         0         0         0         1         0         0         0         0         0         0         0         0         0         1         0         1
-s8               0         0         0         0         0         1         0         0         0         0         0         0         0         0         0         1         1
-
-Entering variable: x1   Leaving variable: a1   (pivot row c3, ratio = 1)
-
---- Iteration 1 ---
-Basis           x1        x2        x3        x4        x5        x6        s1        s2        e1        a1        s3        s4        s5        s6        s7        s8       RHS
-s1               0         8         6        14        10        10         1         0        11       -11         0         0         0         0         0         0        29
-s2               0         0         0         0         1         0         0         1         0         0         0         0         0         0         0         0         0
-x1               1         0         0         0         0         0         0         0        -1         1         0         0         0         0         0         0         1
-s3               0         0         0         0         0         0         0         0         1        -1         1         0         0         0         0         0         0
-s4               0         1         0         0         0         0         0         0         0         0         0         1         0         0         0         0         1
-s5               0         0         1         0         0         0         0         0         0         0         0         0         1         0         0         0         1
-s6               0         0         0         1         0         0         0         0         0         0         0         0         0         1         0         0         1
-s7               0         0         0         0         1         0         0         0         0         0         0         0         0         0         1         0         1
-s8               0         0         0         0         0         1         0         0         0         0         0         0         0         0         0         1         1
-
-Entering variable: x4   Leaving variable: s6   (pivot row c7, ratio = 1)
-
---- Iteration 2 ---
-Basis           x1        x2        x3        x4        x5        x6        s1        s2        e1        a1        s3        s4        s5        s6        s7        s8       RHS
-s1               0         8         6         0        10        10         1         0        11       -11         0         0         0       -14         0         0        15
-s2               0         0         0         0         1         0         0         1         0         0         0         0         0         0         0         0         0
-x1               1         0         0         0         0         0         0         0        -1         1         0         0         0         0         0         0         1
-s3               0         0         0         0         0         0         0         0         1        -1         1         0         0         0         0         0         0
-s4               0         1         0         0         0         0         0         0         0         0         0         1         0         0         0         0         1
-s5               0         0         1         0         0         0         0         0         0         0         0         0         1         0         0         0         1
-x4               0         0         0         1         0         0         0         0         0         0         0         0         0         1         0         0         1
-s7               0         0         0         0         1         0         0         0         0         0         0         0         0         0         1         0         1
-s8               0         0         0         0         0         1         0         0         0         0         0         0         0         0         0         1         1
-
-Entering variable: x6   Leaving variable: s8   (pivot row c9, ratio = 1)
-
---- Iteration 3 ---
-Basis           x1        x2        x3        x4        x5        x6        s1        s2        e1        a1        s3        s4        s5        s6        s7        s8       RHS
-s1               0         8         6         0        10         0         1         0        11       -11         0         0         0       -14         0       -10         5
-s2               0         0         0         0         1         0         0         1         0         0         0         0         0         0         0         0         0
-x1               1         0         0         0         0         0         0         0        -1         1         0         0         0         0         0         0         1
-s3               0         0         0         0         0         0         0         0         1        -1         1         0         0         0         0         0         0
-s4               0         1         0         0         0         0         0         0         0         0         0         1         0         0         0         0         1
-s5               0         0         1         0         0         0         0         0         0         0         0         0         1         0         0         0         1
-x4               0         0         0         1         0         0         0         0         0         0         0         0         0         1         0         0         1
-s7               0         0         0         0         1         0         0         0         0         0         0         0         0         0         1         0         1
-x6               0         0         0         0         0         1         0         0         0         0         0         0         0         0         0         1         1
-
-Entering variable: x2   Leaving variable: s1   (pivot row c1, ratio = 0,625)
-
---- Iteration 4 ---
-Basis           x1        x2        x3        x4        x5        x6        s1        s2        e1        a1        s3        s4        s5        s6        s7        s8       RHS
-x2               0         1      0,75         0      1,25         0     0,125         0     1,375    -1,375         0         0         0     -1,75         0     -1,25     0,625
-s2               0         0         0         0         1         0         0         1         0         0         0         0         0         0         0         0         0
-x1               1         0         0         0         0         0         0         0        -1         1         0         0         0         0         0         0         1
-s3               0         0         0         0         0         0         0         0         1        -1         1         0         0         0         0         0         0
-s4               0         0     -0,75         0     -1,25         0    -0,125         0    -1,375     1,375         0         1         0      1,75         0      1,25     0,375
-s5               0         0         1         0         0         0         0         0         0         0         0         0         1         0         0         0         1
-x4               0         0         0         1         0         0         0         0         0         0         0         0         0         1         0         0         1
-s7               0         0         0         0         1         0         0         0         0         0         0         0         0         0         1         0         1
-x6               0         0         0         0         0         1         0         0         0         0         0         0         0         0         0         1         1
-
-Entering variable: x3   Leaving variable: x2   (pivot row c1, ratio = 0,833)
-
---- Iteration 5 ---
-Basis           x1        x2        x3        x4        x5        x6        s1        s2        e1        a1        s3        s4        s5        s6        s7        s8       RHS
-x3               0     1,333         1         0     1,667         0     0,167         0     1,833    -1,833         0         0         0    -2,333         0    -1,667     0,833
-s2               0         0         0         0         1         0         0         1         0         0         0         0         0         0         0         0         0
-x1               1         0         0         0         0         0         0         0        -1         1         0         0         0         0         0         0         1
-s3               0         0         0         0         0         0         0         0         1        -1         1         0         0         0         0         0         0
-s4               0         1         0         0         0         0         0         0         0         0         0         1         0         0         0         0         1
-s5               0    -1,333         0         0    -1,667         0    -0,167         0    -1,833     1,833         0         0         1     2,333         0     1,667     0,167
-x4               0         0         0         1         0         0         0         0         0         0         0         0         0         1         0         0         1
-s7               0         0         0         0         1         0         0         0         0         0         0         0         0         0         1         0         1
-x6               0         0         0         0         0         1         0         0         0         0         0         0         0         0         0         1         1
-
-Entering variable: s6   Leaving variable: s5   (pivot row c6, ratio = 0,071)
-
---- Iteration 6 ---
-Basis           x1        x2        x3        x4        x5        x6        s1        s2        e1        a1        s3        s4        s5        s6        s7        s8       RHS
-x3               0         0         1         0         0         0         0         0         0         0         0         0         1         0         0         0         1
-s2               0         0         0         0         1         0         0         1         0         0         0         0         0         0         0         0         0
-x1               1         0         0         0         0         0         0         0        -1         1         0         0         0         0         0         0         1
-s3               0         0         0         0         0         0         0         0         1        -1         1         0         0         0         0         0         0
-s4               0         1         0         0         0         0         0         0         0         0         0         1         0         0         0         0         1
-s6               0    -0,571         0         0    -0,714         0    -0,071         0    -0,786     0,786         0         0     0,429         1         0     0,714     0,071
-x4               0     0,571         0         1     0,714         0     0,071         0     0,786    -0,786         0         0    -0,429         0         0    -0,714     0,929
-s7               0         0         0         0         1         0         0         0         0         0         0         0         0         0         1         0         1
-x6               0         0         0         0         0         1         0         0         0         0         0         0         0         0         0         1         1
-
-Entering variable: x2   Leaving variable: s4   (pivot row c5, ratio = 1)
-
---- Iteration 7 ---
-Basis           x1        x2        x3        x4        x5        x6        s1        s2        e1        a1        s3        s4        s5        s6        s7        s8       RHS
-x3               0         0         1         0         0         0         0         0         0         0         0         0         1         0         0         0         1
-s2               0         0         0         0         1         0         0         1         0         0         0         0         0         0         0         0         0
-x1               1         0         0         0         0         0         0         0        -1         1         0         0         0         0         0         0         1
-s3               0         0         0         0         0         0         0         0         1        -1         1         0         0         0         0         0         0
-x2               0         1         0         0         0         0         0         0         0         0         0         1         0         0         0         0         1
-s6               0         0         0         0    -0,714         0    -0,071         0    -0,786     0,786         0     0,571     0,429         1         0     0,714     0,643
-x4               0         0         0         1     0,714         0     0,071         0     0,786    -0,786         0    -0,571    -0,429         0         0    -0,714     0,357
-s7               0         0         0         0         1         0         0         0         0         0         0         0         0         0         1         0         1
-x6               0         0         0         0         0         1         0         0         0         0         0         0         0         0         0         1         1
-
-Optimality reached: all (z_j - c_j) >= 0.
-
---- Optimal Solution ---
-x1 = 1
-x2 = 1
-x3 = 1
-x4 = 0,357
-x5 = 0
-x6 = 1
-Optimal objective value (max) = 13,786
-Status: BOUNDED ( z = 13,786 cannot beat the current best. ), Pruned.
-
-=======================================
-Sub-problem: 5 (parent: 1):  x1 <= 0
-=======================================
-========================================================
-           PRIMAL SIMPLEX ALGORITHM (Big-M method)        
-========================================================
-
-Note: x1 is binary -> added implicit bound x1 <= 1 for the LP relaxation.
-Note: x2 is binary -> added implicit bound x2 <= 1 for the LP relaxation.
-Note: x3 is binary -> added implicit bound x3 <= 1 for the LP relaxation.
-Note: x4 is binary -> added implicit bound x4 <= 1 for the LP relaxation.
-Note: x5 is binary -> added implicit bound x5 <= 1 for the LP relaxation.
-Note: x6 is binary -> added implicit bound x6 <= 1 for the LP relaxation.
-
---- Canonical Form ---
-Maximize Z =  +2x1 +3x2 +3x3 +5x4 +2x5 +4x6
-  c1: +11x1 +8x2 +6x3 +14x4 +10x5 +10x6 +1s1 = 40
-  c2: +1x5 +1s2 = 0
-  c3: +1x1 +1s3 = 0
-  c4: +1x1 +1s4 = 1
-  c5: +1x2 +1s5 = 1
-  c6: +1x3 +1s6 = 1
-  c7: +1x4 +1s7 = 1
-  c8: +1x5 +1s8 = 1
-  c9: +1x6 +1s9 = 1
-
---- Iteration 0 (Initial Tableau) ---
-Basis           x1        x2        x3        x4        x5        x6        s1        s2        s3        s4        s5        s6        s7        s8        s9       RHS
-s1              11         8         6        14        10        10         1         0         0         0         0         0         0         0         0        40
-s2               0         0         0         0         1         0         0         1         0         0         0         0         0         0         0         0
-s3               1         0         0         0         0         0         0         0         1         0         0         0         0         0         0         0
-s4               1         0         0         0         0         0         0         0         0         1         0         0         0         0         0         1
-s5               0         1         0         0         0         0         0         0         0         0         1         0         0         0         0         1
-s6               0         0         1         0         0         0         0         0         0         0         0         1         0         0         0         1
-s7               0         0         0         1         0         0         0         0         0         0         0         0         1         0         0         1
-s8               0         0         0         0         1         0         0         0         0         0         0         0         0         1         0         1
-s9               0         0         0         0         0         1         0         0         0         0         0         0         0         0         1         1
-
-Entering variable: x4   Leaving variable: s7   (pivot row c7, ratio = 1)
-
---- Iteration 1 ---
-Basis           x1        x2        x3        x4        x5        x6        s1        s2        s3        s4        s5        s6        s7        s8        s9       RHS
-s1              11         8         6         0        10        10         1         0         0         0         0         0       -14         0         0        26
-s2               0         0         0         0         1         0         0         1         0         0         0         0         0         0         0         0
-s3               1         0         0         0         0         0         0         0         1         0         0         0         0         0         0         0
-s4               1         0         0         0         0         0         0         0         0         1         0         0         0         0         0         1
-s5               0         1         0         0         0         0         0         0         0         0         1         0         0         0         0         1
-s6               0         0         1         0         0         0         0         0         0         0         0         1         0         0         0         1
-x4               0         0         0         1         0         0         0         0         0         0         0         0         1         0         0         1
-s8               0         0         0         0         1         0         0         0         0         0         0         0         0         1         0         1
-s9               0         0         0         0         0         1         0         0         0         0         0         0         0         0         1         1
-
-Entering variable: x6   Leaving variable: s9   (pivot row c9, ratio = 1)
-
---- Iteration 2 ---
-Basis           x1        x2        x3        x4        x5        x6        s1        s2        s3        s4        s5        s6        s7        s8        s9       RHS
-s1              11         8         6         0        10         0         1         0         0         0         0         0       -14         0       -10        16
-s2               0         0         0         0         1         0         0         1         0         0         0         0         0         0         0         0
-s3               1         0         0         0         0         0         0         0         1         0         0         0         0         0         0         0
-s4               1         0         0         0         0         0         0         0         0         1         0         0         0         0         0         1
-s5               0         1         0         0         0         0         0         0         0         0         1         0         0         0         0         1
-s6               0         0         1         0         0         0         0         0         0         0         0         1         0         0         0         1
-x4               0         0         0         1         0         0         0         0         0         0         0         0         1         0         0         1
-s8               0         0         0         0         1         0         0         0         0         0         0         0         0         1         0         1
-x6               0         0         0         0         0         1         0         0         0         0         0         0         0         0         1         1
-
-Entering variable: x2   Leaving variable: s5   (pivot row c5, ratio = 1)
-
---- Iteration 3 ---
-Basis           x1        x2        x3        x4        x5        x6        s1        s2        s3        s4        s5        s6        s7        s8        s9       RHS
-s1              11         0         6         0        10         0         1         0         0         0        -8         0       -14         0       -10         8
-s2               0         0         0         0         1         0         0         1         0         0         0         0         0         0         0         0
-s3               1         0         0         0         0         0         0         0         1         0         0         0         0         0         0         0
-s4               1         0         0         0         0         0         0         0         0         1         0         0         0         0         0         1
-x2               0         1         0         0         0         0         0         0         0         0         1         0         0         0         0         1
-s6               0         0         1         0         0         0         0         0         0         0         0         1         0         0         0         1
-x4               0         0         0         1         0         0         0         0         0         0         0         0         1         0         0         1
-s8               0         0         0         0         1         0         0         0         0         0         0         0         0         1         0         1
-x6               0         0         0         0         0         1         0         0         0         0         0         0         0         0         1         1
-
-Entering variable: x3   Leaving variable: s6   (pivot row c6, ratio = 1)
-
---- Iteration 4 ---
-Basis           x1        x2        x3        x4        x5        x6        s1        s2        s3        s4        s5        s6        s7        s8        s9       RHS
-s1              11         0         0         0        10         0         1         0         0         0        -8        -6       -14         0       -10         2
-s2               0         0         0         0         1         0         0         1         0         0         0         0         0         0         0         0
-s3               1         0         0         0         0         0         0         0         1         0         0         0         0         0         0         0
-s4               1         0         0         0         0         0         0         0         0         1         0         0         0         0         0         1
-x2               0         1         0         0         0         0         0         0         0         0         1         0         0         0         0         1
-x3               0         0         1         0         0         0         0         0         0         0         0         1         0         0         0         1
-x4               0         0         0         1         0         0         0         0         0         0         0         0         1         0         0         1
-s8               0         0         0         0         1         0         0         0         0         0         0         0         0         1         0         1
-x6               0         0         0         0         0         1         0         0         0         0         0         0         0         0         1         1
-
-Entering variable: x1   Leaving variable: s3   (pivot row c3, ratio = 0)
-
---- Iteration 5 ---
-Basis           x1        x2        x3        x4        x5        x6        s1        s2        s3        s4        s5        s6        s7        s8        s9       RHS
-s1               0         0         0         0        10         0         1         0       -11         0        -8        -6       -14         0       -10         2
-s2               0         0         0         0         1         0         0         1         0         0         0         0         0         0         0         0
-x1               1         0         0         0         0         0         0         0         1         0         0         0         0         0         0         0
-s4               0         0         0         0         0         0         0         0        -1         1         0         0         0         0         0         1
-x2               0         1         0         0         0         0         0         0         0         0         1         0         0         0         0         1
-x3               0         0         1         0         0         0         0         0         0         0         0         1         0         0         0         1
-x4               0         0         0         1         0         0         0         0         0         0         0         0         1         0         0         1
-s8               0         0         0         0         1         0         0         0         0         0         0         0         0         1         0         1
-x6               0         0         0         0         0         1         0         0         0         0         0         0         0         0         1         1
-
-Entering variable: x5   Leaving variable: s2   (pivot row c2, ratio = 0)
-
---- Iteration 6 ---
-Basis           x1        x2        x3        x4        x5        x6        s1        s2        s3        s4        s5        s6        s7        s8        s9       RHS
-s1               0         0         0         0         0         0         1       -10       -11         0        -8        -6       -14         0       -10         2
-x5               0         0         0         0         1         0         0         1         0         0         0         0         0         0         0         0
-x1               1         0         0         0         0         0         0         0         1         0         0         0         0         0         0         0
-s4               0         0         0         0         0         0         0         0        -1         1         0         0         0         0         0         1
-x2               0         1         0         0         0         0         0         0         0         0         1         0         0         0         0         1
-x3               0         0         1         0         0         0         0         0         0         0         0         1         0         0         0         1
-x4               0         0         0         1         0         0         0         0         0         0         0         0         1         0         0         1
-s8               0         0         0         0         0         0         0        -1         0         0         0         0         0         1         0         1
-x6               0         0         0         0         0         1         0         0         0         0         0         0         0         0         1         1
-
-Optimality reached: all (z_j - c_j) >= 0.
-
---- Optimal Solution ---
-x1 = 0
-x2 = 1
-x3 = 1
-x4 = 1
-x5 = 0
-x6 = 1
-Optimal objective value (max) = 15
-Status: INTEGER-FEASIBLE, Candidate Solution
-
-=======================================
-Best Candidate
-=======================================
-x1 = 0
-x2 = 1
-x3 = 1
-x4 = 1
-x5 = 0
-x6 = 1
-Sub-problem: 5
-Optimal Objective Value (max) = 15
-
-========================================================
+x3 = 1,4
+x4 = 1,8
+x5 = 2,2
+x6 = 0
+x7 = 2
+Optimal objective value (min) = 15,4
+
+================================================
+             DUALITY CHECK
+================================================
+
+Primal Objective : 15,4
+Dual Objective   : 15,4
+
+Strong Duality holds.
 
