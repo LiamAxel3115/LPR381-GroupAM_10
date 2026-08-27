@@ -52,13 +52,16 @@ namespace Simplex_Solver_APP.Analysis
             output.AppendLine("Only original model constraints are shown.");
             output.AppendLine();
 
-            int slackStart = result.VariableCount;
+            //int slackStart = result.VariableCount;
             int originalConstraints = result.OriginalModel.Constraint.Count;
+
+            double[] dualPrices = new PriceOut(result).DualPrices();
+
 
             for (int i = 0; i < originalConstraints; i++)
             {
                 output.AppendLine(
-                    $"Constraint c{i + 1}: {result.Tableau[ObjectiveRow, slackStart + i]:0.###}");
+                    $"Constraint c{i + 1}: {dualPrices[i]:0.###}");
             }
 
             return output.ToString();
@@ -111,15 +114,16 @@ namespace Simplex_Solver_APP.Analysis
             {
                 output.AppendLine("The variable has an alternative optimal value.");
             }
-            else if (rc > 0)
-            {
-                output.AppendLine(
-                    $"Objective coefficient may decrease by {rc:0.###} before entering the basis.");
-            }
+           // else //if //(rc > 0)
+           // {
+           //     output.AppendLine(
+           //         $"Objective coefficient may decrease by {rc:0.###} before entering the basis.");
+           // }
             else
             {
                 output.AppendLine(
-                    $"Objective coefficient may increase by {Math.Abs(rc):0.###} before entering the basis.");
+                    $"Objective coefficient may increase by {rc:0.###} before entering the basis.");
+                output.AppendLine("No limit on how far it may decrease.");
             }
 
             return output.ToString();
@@ -164,8 +168,9 @@ namespace Simplex_Solver_APP.Analysis
 
             output.AppendLine($"Original Constraint : c{constraint + 1}");
             output.AppendLine($"Current RHS : {result.OriginalModel.Constraint[constraint].RHS_Value:0.###}");
+            double shadowPrice = new PriceOut(result).DualPrices()[constraint];
             output.AppendLine(
-                $"Current Shadow Price : {result.Tableau[ObjectiveRow, SlackStart + constraint]:0.###}");
+                $"Current Shadow Price : {shadowPrice:0.###}");
             output.AppendLine();
 
             output.AppendLine("This report applies only to the original model.");
@@ -228,7 +233,13 @@ namespace Simplex_Solver_APP.Analysis
         {
             Formulation modified = CloneModel();
 
-            modified.Constraint[constraintIndex].SetRHS(newRHS);
+            var old = modified.Constraint[constraintIndex];
+            modified.Constraint[constraintIndex] = new Conditions(
+                new List<double>(old.Constraint_Coefficients),
+                old.Inequality,
+                newRHS);
+
+            //modified.Constraint[constraintIndex].SetRHS(newRHS);
 
             return ResolveModel(
                 modified,
@@ -260,7 +271,7 @@ namespace Simplex_Solver_APP.Analysis
 
             modified.Obj_Func_coefficients.Add(objectiveCoefficient);
             modified.Sign_Restrictions.Add(restriction);
-            modified.VarCount++;
+            //modified.VarCount++;
 
             for (int i = 0; i < modified.Constraint.Count; i++)
                 modified.Constraint[i].Constraint_Coefficients.Add(coefficients[i]);
@@ -286,7 +297,7 @@ namespace Simplex_Solver_APP.Analysis
             Formulation clone = new Formulation();
 
             clone.Objective = result.OriginalModel.Objective;
-            clone.VarCount = result.OriginalModel.VarCount;
+            //clone.VarCount = result.OriginalModel.VarCount;
 
             clone.Obj_Func_coefficients =
                 new List<double>(result.OriginalModel.Obj_Func_coefficients);

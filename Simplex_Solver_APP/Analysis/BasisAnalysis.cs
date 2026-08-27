@@ -26,8 +26,9 @@ namespace Simplex_Solver_APP.Analysis
             double decrease = double.PositiveInfinity;
 
             int objectiveRow = result.Tableau.GetLength(0) - 1;
+            int totalColumns = result.Tableau.GetLength(1) - 1; // Exclude RHS
 
-            for (int j = 0; j < result.VariableCount; j++)
+            for (int j = 0; j < totalColumns; j++)
             {
                 if (result.Basis.Contains(j))
                     continue;
@@ -65,15 +66,16 @@ namespace Simplex_Solver_APP.Analysis
 
             for (int i = 0; i < m; i++)
             {
-                int basisColumn = result.Basis[i];
+                int basisColumn = result.InitialBasis[i];
 
                 for (int r = 0; r < m; r++)
                     B[r, i] = result.Tableau[r, basisColumn];
             }
 
-            return InvertMatrix(B);
+            return B;
+            //return InvertMatrix(B);
         }
-        private double[,] InvertMatrix(double[,] matrix)
+        /*private double[,] InvertMatrix(double[,] matrix)
         {
             int n = matrix.GetLength(0);
 
@@ -118,7 +120,7 @@ namespace Simplex_Solver_APP.Analysis
                     inverse[i, j] = aug[i, j + n];
 
             return inverse;
-        }
+        }*/
     }
 
 }

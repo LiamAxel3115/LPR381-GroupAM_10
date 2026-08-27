@@ -261,6 +261,8 @@ namespace Simplex_Solver_APP.Solvers
 
             double[] b = rhsList.ToArray();
 
+            int[] initialBasis = (int[])basis.Clone();
+
             // ------------------------------------------------------------------
             // 4) Print the canonical form.
             // ------------------------------------------------------------------
@@ -344,6 +346,7 @@ namespace Simplex_Solver_APP.Solvers
                 if (leave == -1)
                 {
                     writer.WriteLine("Problem is UNBOUNDED: column " + columnNames[enter] + " can increase without limit.");
+                    lastResult = new Optimal { IsUnbounded = true };
                     return;
                 }
 
@@ -373,6 +376,7 @@ namespace Simplex_Solver_APP.Solvers
                 if (iteration > 500)
                 {
                     writer.WriteLine("Stopped after 500 iterations (possible cycling/degeneracy). Please check the model.");
+                    lastResult = new Optimal();
                     return;
                 }
             }
@@ -387,6 +391,7 @@ namespace Simplex_Solver_APP.Solvers
                 {
                     writer.WriteLine("Problem is INFEASIBLE: artificial variable " + columnNames[basis[i]] +
                                       " remains positive (" + Round(b[i]) + ") in the optimal basis.");
+                    lastResult = new Optimal { IsInfeasible = true };
                     return;
                 }
             }
@@ -447,6 +452,8 @@ namespace Simplex_Solver_APP.Solvers
             lastResult.Tableau = Optimal.CloneTableau(BuildTableau(A, b, finalZMinusC));
             lastResult.RHS = Optimal.CloneArray(b);
             lastResult.Basis = Optimal.CloneArray(basis);
+            lastResult.InitialBasis = Optimal.CloneArray(initialBasis);
+            lastResult.ObjCoefficients = Optimal.CloneArray(objCoeffs.ToArray());
 
             lastResult.ColumnNames = new List<string>(columnNames);
 

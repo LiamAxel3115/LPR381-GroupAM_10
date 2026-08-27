@@ -25,6 +25,9 @@ namespace Simplex_Solver_APP.Analysis
 
         public int[] Basis { get; set; }
 
+        public int[] InitialBasis { get; set; }
+        public double[] ObjCoefficients { get; set; }
+
         public List<string> ColumnNames { get; set; }
 
         public int ConstraintCount { get; set; }

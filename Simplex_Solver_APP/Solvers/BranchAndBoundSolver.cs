@@ -4,6 +4,7 @@ using System.Linq;
 
 using Simplex_Solver_APP.Model;
 using Simplex_Solver_APP.File_handler;
+using Simplex_Solver_APP.Analysis;
 
 namespace Simplex_Solver_APP.Solvers
 {
@@ -62,7 +63,8 @@ namespace Simplex_Solver_APP.Solvers
                 writer.WriteLine($"Sub-problem: {node.NodeID} (parent: {node.ParentID}):  {node.BDescription}");
                 writer.WriteLine("=======================================");
 
-                Result result = primalSolver.Solve(node.SubModel, writer);
+                primalSolver.Solve(node.SubModel, writer);
+                Optimal result = primalSolver.GetLastResult();
 
                 if (result == null)
                 {
@@ -92,6 +94,13 @@ namespace Simplex_Solver_APP.Solvers
 
 
 
+                double[] solution = new double[node.SubModel.VarCount];
+                for(int j = 0; j < node.SubModel.VarCount; j++)
+                {
+                    solution[j] = result.VariableValues.TryGetValue("x" + (j + 1), out double v) ? v : 0;
+                }
+
+
 
 
                 double comparableZ = maximize ? result.ObjectiveValue : -result.ObjectiveValue;
@@ -104,7 +113,7 @@ namespace Simplex_Solver_APP.Solvers
                 }
 
 
-                int branchVariable = FindFractionalIntegerVariable(model, result.Solution);
+                int branchVariable = FindFractionalIntegerVariable(model, solution);
                 if (branchVariable == -1)
                 {
 
@@ -112,7 +121,7 @@ namespace Simplex_Solver_APP.Solvers
                     writer.WriteLine();
 
                     bestZ = comparableZ;
-                    bestSolution = result.Solution;
+                    bestSolution = solution;
                     bestNodeID = node.NodeID;
                     continue;
                 }
@@ -120,10 +129,10 @@ namespace Simplex_Solver_APP.Solvers
 
 
 
-                writer.WriteLine($"Status: Fractional on x{branchVariable + 1} = {File_writer.Round3(result.Solution[branchVariable])}, Branching");
+                writer.WriteLine($"Status: Fractional on x{branchVariable + 1} = {File_writer.Round3(solution[branchVariable])}, Branching");
                 writer.WriteLine();
 
-                double value = result.Solution[branchVariable];
+                double value = solution[branchVariable];
                 Formulation floorChild = WithExtraConstraint(node.SubModel, branchVariable, Equality_Sign.LessThanOrEqual, Math.Floor(value));
                 Formulation ceilChild = WithExtraConstraint(node.SubModel, branchVariable, Equality_Sign.GreaterThanOrEqual, Math.Ceiling(value));
 

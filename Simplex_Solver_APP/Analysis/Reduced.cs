@@ -26,12 +26,14 @@ namespace Simplex_Solver_APP.Analysis
 
             for (int i = 0; i < m; i++)
             {
-                string name = result.ColumnNames[result.Basis[i]];
+                /* string name = result.ColumnNames[result.Basis[i]];
 
-                if (result.VariableValues.ContainsKey(name))
-                    cB[i] = result.VariableValues[name];
-                else
-                    cB[i] = 0;
+                 if (result.VariableValues.ContainsKey(name))
+                     cB[i] = result.VariableValues[name];
+                 else
+                     cB[i] = 0;
+                */
+                cB[i] = ObjectiveCoefficient(result.Basis[i]);
             }
 
             double[] y = new double[m];
@@ -69,10 +71,10 @@ namespace Simplex_Solver_APP.Analysis
 
         public double ObjectiveCoefficient(int column)
         {
-            string name = result.ColumnNames[column];
+            //string name = result.ColumnNames[column];
 
-            if (result.VariableValues.ContainsKey(name))
-                return result.VariableValues[name];
+            if (result.ObjCoefficients != null && column < result.ObjCoefficients.Length)
+                return result.ObjCoefficients[column];
 
             return 0;
         }

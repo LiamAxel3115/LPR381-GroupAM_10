@@ -104,10 +104,25 @@ namespace Simplex_Solver_APP
                         lastOptimal = solver.GetLastResult();
                         break;
                     case algorithms.revised:
+                        // RunSolver(() => new PrimalSimplexSolver().Solve(model, writer));
+                        RevisedPrimalSimplexSolver Rsolver = new RevisedPrimalSimplexSolver();
+
+                        RunSolver(() => Rsolver.Solve(model, writer));
+
                         break;
                     case algorithms.Branch_And_Bound:
+                        // RunSolver(() => new PrimalSimplexSolver().Solve(model, writer));
+                        BranchAndBoundSolver BBsolver = new BranchAndBoundSolver();
+
+                        RunSolver(() => BBsolver.Solve(model, writer));
+
                         break;
                     case algorithms.Cutting_plane:
+                        // RunSolver(() => new PrimalSimplexSolver().Solve(model, writer));
+                        CuttingPlaneSolver CPsolver = new CuttingPlaneSolver();
+
+                        RunSolver(() => CPsolver.Solve(model, writer));
+
                         break;
                     case algorithms.Napsack:
                         RunSolver(() => new BranchAndBoundKnapsackSolver().Solve(model, writer));
