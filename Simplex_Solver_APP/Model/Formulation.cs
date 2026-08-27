@@ -15,7 +15,12 @@ namespace Simplex_Solver_APP.Model
         public List<Conditions> Constraint { get; set; } = new List<Conditions>();
         public List<Sign_Restriction> Sign_Restrictions { get; set; } = new List<Sign_Restriction>();
 
-        public int VarCount => Obj_Func_coefficients.Count;
+        //public int VarCount => Obj_Func_coefficients.Count;
+        public int VarCount
+        {
+            get { return Obj_Func_coefficients.Count; }
+            set { }
+        }
         public int ConstraintCount => Constraint.Count;
 
         // Integer variables or binary variables
