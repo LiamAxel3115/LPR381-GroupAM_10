@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -92,11 +92,13 @@ namespace Simplex_Solver_APP
                         RunSolver(() => new PrimalSimplexSolver().Solve(model, writer));
                         break;
                     case algorithms.revised:
+                        RunSolver(() => new RevisedPrimalSimplexSolver().Solve(model, writer));
                         break;
                     case algorithms.Branch_And_Bound:
                         RunSolver(() => new BranchAndBoundSolver().Solve(model, writer));
                         break;
                     case algorithms.Cutting_plane:
+                        RunSolver(() => new CuttingPlaneSolver().Solve(model, writer));
                         break;
                     case algorithms.Napsack:
                         RunSolver(() => new BranchAndBoundKnapsackSolver().Solve(model, writer));
