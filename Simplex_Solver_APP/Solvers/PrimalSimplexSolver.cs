@@ -6,7 +6,6 @@ using System.Text;
 //import modules
 using Simplex_Solver_APP.Model;
 using Simplex_Solver_APP.File_handler;
-using Simplex_Solver_APP.Analysis;
 
 namespace Simplex_Solver_APP.Solvers
 {
@@ -25,8 +24,6 @@ namespace Simplex_Solver_APP.Solvers
     ///   4) prints the final solution translated back to the ORIGINAL
     ///      decision variables (x1, x2, ...).
     /// </summary>
-
-
     public class PrimalSimplexSolver
     {
         private const double BigM = 1000000.0;   // large penalty for artificial variables
@@ -34,13 +31,6 @@ namespace Simplex_Solver_APP.Solvers
 
         // Describes how one original decision variable (x_j) maps onto the
         // column(s) that are actually used inside the standard-form tableau.
-
-        private Optimal lastResult = new Optimal();
-        public Optimal GetLastResult()
-        {
-            return lastResult;
-        }
-        public Formulation SolvedModel { get; private set; }
         private class VarMap
         {
             public int OriginalIndex;
@@ -113,8 +103,6 @@ namespace Simplex_Solver_APP.Solvers
                 }
 
                 maps.Add(map);
-
-
             }
 
             int decisionColumns = columnNames.Count;
@@ -149,7 +137,6 @@ namespace Simplex_Solver_APP.Solvers
                 rhsList.Add(constraint.RHS_Value);
             }
 
-
             // Binary variables need an explicit upper bound for the LP relaxation.
             for (int j = 0; j < model.VarCount; j++)
             {
@@ -160,22 +147,10 @@ namespace Simplex_Solver_APP.Solvers
                     rows.Add(row);
                     relations.Add(Equality_Sign.LessThanOrEqual);
                     rhsList.Add(1);
-
-                    writer.WriteLine(
-                        "Note: x" + (j + 1) +
-                        " is binary -> added implicit bound x" +
-                        (j + 1) +
-                        " <= 1 for the LP relaxation.");
+                    writer.WriteLine("Note: x" + (j + 1) + " is binary -> added implicit bound x" + (j + 1) + " <= 1 for the LP relaxation.");
                 }
             }
 
-            // ============================================================
-            // Store the exact LP relaxation that will be solved.
-            // This is used later by Duality.
-            // ============================================================
-
-            SolvedModel = BuildSolvedModel(model);
-            // Number of constraints after adding binary bounds.
             int m = rows.Count;
 
             // Make sure every RHS is >= 0 (required so slack/artificial vars can start basic).
@@ -261,8 +236,6 @@ namespace Simplex_Solver_APP.Solvers
 
             double[] b = rhsList.ToArray();
 
-            int[] initialBasis = (int[])basis.Clone();
-
             // ------------------------------------------------------------------
             // 4) Print the canonical form.
             // ------------------------------------------------------------------
@@ -346,7 +319,6 @@ namespace Simplex_Solver_APP.Solvers
                 if (leave == -1)
                 {
                     writer.WriteLine("Problem is UNBOUNDED: column " + columnNames[enter] + " can increase without limit.");
-                    lastResult = new Optimal { IsUnbounded = true };
                     return;
                 }
 
@@ -376,7 +348,6 @@ namespace Simplex_Solver_APP.Solvers
                 if (iteration > 500)
                 {
                     writer.WriteLine("Stopped after 500 iterations (possible cycling/degeneracy). Please check the model.");
-                    lastResult = new Optimal();
                     return;
                 }
             }
@@ -391,7 +362,6 @@ namespace Simplex_Solver_APP.Solvers
                 {
                     writer.WriteLine("Problem is INFEASIBLE: artificial variable " + columnNames[basis[i]] +
                                       " remains positive (" + Round(b[i]) + ") in the optimal basis.");
-                    lastResult = new Optimal { IsInfeasible = true };
                     return;
                 }
             }
@@ -420,62 +390,6 @@ namespace Simplex_Solver_APP.Solvers
             }
 
             writer.WriteLine("Optimal objective value (" + (maximize ? "max" : "min") + ") = " + Round(objectiveValue));
-
-            // ============================================================
-            // Build the final z-c row for Sensitivity Analysis
-            // ============================================================
-
-            double[] finalZMinusC = new double[totalColumns];
-
-            for (int j = 0; j < totalColumns; j++)
-            {
-                double zj = 0;
-
-                for (int i = 0; i < m; i++)
-                {
-                    zj += objCoeffs[basis[i]] * A[i, j];
-                }
-
-                finalZMinusC[j] = zj - objCoeffs[j];
-            }
-            // Store the result for later analysis
-            // ============================================================
-            // Cache the final result for Sensitivity Analysis
-            // ============================================================
-
-            lastResult = new Optimal();
-
-            lastResult.IsOptimal = true;
-            lastResult.ObjectiveValue = objectiveValue;
-            lastResult.OriginalModel = SolvedModel;
-            lastResult.OriginalRHS = model.Constraint.Select(c => c.RHS_Value).ToArray();
-            lastResult.Tableau = Optimal.CloneTableau(BuildTableau(A, b, finalZMinusC));
-            lastResult.RHS = Optimal.CloneArray(b);
-            lastResult.Basis = Optimal.CloneArray(basis);
-            lastResult.InitialBasis = Optimal.CloneArray(initialBasis);
-            lastResult.ObjCoefficients = Optimal.CloneArray(objCoeffs.ToArray());
-
-            lastResult.ColumnNames = new List<string>(columnNames);
-
-            lastResult.ConstraintCount = m;
-            lastResult.VariableCount = model.VarCount;
-
-            for (int j = 0; j < model.VarCount; j++)
-            {
-                VarMap map = maps[j];
-
-                double value;
-
-                if (map.Negated)
-                    value = -values[map.PositiveColumn];
-                else if (map.NegativeColumn != -1)
-                    value = values[map.PositiveColumn] - values[map.NegativeColumn];
-                else
-                    value = values[map.PositiveColumn];
-
-                lastResult.VariableValues.Add("x" + (j + 1), value);
-            }
-
         }
 
         private static void PrintTableau(File_writer writer, int iteration, List<string> columnNames,
@@ -500,86 +414,5 @@ namespace Simplex_Solver_APP.Solvers
         }
 
         private static double Round(double v) => File_writer.Round3(v);
-
-        private static double[,] BuildTableau(
-    double[,] A,
-    double[] b,
-    double[] zMinusC)
-        {
-            int rows = A.GetLength(0);
-            int cols = A.GetLength(1);
-
-            // +1 row for the objective row
-            double[,] tableau = new double[rows + 1, cols + 1];
-
-            // Constraint rows
-            for (int i = 0; i < rows; i++)
-            {
-                for (int j = 0; j < cols; j++)
-                {
-                    tableau[i, j] = A[i, j];
-                }
-
-                tableau[i, cols] = b[i];
-            }
-
-            // Objective row (z-c)
-            for (int j = 0; j < cols; j++)
-            {
-                tableau[rows, j] = zMinusC[j];
-            }
-
-            tableau[rows, cols] = 0;
-
-            return tableau;
-        }
-
-        private Formulation CloneFormulation(Formulation source)
-        {
-            Formulation copy = new Formulation();
-
-            copy.Objective = source.Objective;
-
-            copy.Obj_Func_coefficients =
-                new List<double>(source.Obj_Func_coefficients);
-
-            copy.Sign_Restrictions =
-                new List<Sign_Restriction>(source.Sign_Restrictions);
-
-            foreach (Conditions c in source.Constraint)
-            {
-                copy.Constraint.Add(
-                    new Conditions(
-                        new List<double>(c.Constraint_Coefficients),
-                        c.Inequality,
-                        c.RHS_Value));
-            }
-
-            return copy;
-        }
-        private Formulation BuildSolvedModel(Formulation original)
-        {
-            Formulation copy = CloneFormulation(original);
-
-            // Add the binary upper-bound constraints that the solver added internally.
-            for (int j = 0; j < original.VarCount; j++)
-            {
-                if (original.Sign_Restrictions[j] == Sign_Restriction.Bin)
-                {
-                    List<double> coeffs = new List<double>();
-
-                    for (int k = 0; k < original.VarCount; k++)
-                        coeffs.Add(k == j ? 1 : 0);
-
-                    copy.Constraint.Add(
-                        new Conditions(
-                            coeffs,
-                            Equality_Sign.LessThanOrEqual,
-                            1));
-                }
-            }
-
-            return copy;
-        }
     }
 }

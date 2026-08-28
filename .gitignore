@@ -1,13 +1,1 @@
-# Visual Studio local files
 .vs/
-*.user
-*.suo
-
-# Build output
-bin/
-obj/
-
-# Rider/VS Code, if anyone on the team uses them
-.idea/
-.vscode/
-

@@ -1,15 +1,15 @@
-using Simplex_Solver_APP.Analysis;
-using Simplex_Solver_APP.File_handler;
-//import modules
-using Simplex_Solver_APP.Model;
-using Simplex_Solver_APP.Solvers;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+
+//import modules
+using Simplex_Solver_APP.Model;
+using Simplex_Solver_APP.File_handler;
+using Simplex_Solver_APP.Solvers;
 using System.Windows.Forms;
 
 namespace Simplex_Solver_APP
@@ -26,7 +26,6 @@ namespace Simplex_Solver_APP
         //};
         private static Formulation model;
         private static File_writer writer;
-        private static Optimal lastOptimal;
 
         [STAThread]
         static void Main(string[] args)
@@ -62,10 +61,9 @@ namespace Simplex_Solver_APP
             Branch_And_Bound,
             Cutting_plane,
             Napsack,
-            sensitivity,
-            Duality,
             exit
         }
+
         private static void Menu()
         {
             bool terminate = false;
@@ -78,60 +76,27 @@ namespace Simplex_Solver_APP
                 Console.WriteLine(" \t 3)  Solve using Branch & Bound Simplex ");
                 Console.WriteLine(" \t 4)  Solve using Cutting Plane ");
                 Console.WriteLine(" \t 5)  Solve using Branch & Bound Knapsack ");
-                Console.WriteLine(" \t 6)  Sensitivity Analysis ");
-                Console.WriteLine(" \t 7)  Duality ");
-                Console.WriteLine(" \t 8)  exit ");
-                Console.Write(" Select (1-8) from the MENU: ");
+                Console.WriteLine(" \t 6)  exit ");
+                Console.Write(" Select (1-6) from the MENU: ");
 
-                int input_param;
-
-                if (!int.TryParse(Console.ReadLine().Trim(), out input_param))
-                {
-                    Console.WriteLine("Please enter a number between 1 and 8.\n");
-                    continue;
-                }
+                int input_param = int.Parse(Console.ReadLine().Trim());
+                Console.WriteLine();
 
                 algorithms option = (algorithms)input_param;
 
                 switch (option)
                 {
                     case algorithms.Primal:
-                        // RunSolver(() => new PrimalSimplexSolver().Solve(model, writer));
-                        PrimalSimplexSolver solver = new PrimalSimplexSolver();
-
-                        RunSolver(() => solver.Solve(model, writer));
-
-                        lastOptimal = solver.GetLastResult();
+                        RunSolver(() => new PrimalSimplexSolver().Solve(model, writer));
                         break;
                     case algorithms.revised:
-                        // RunSolver(() => new PrimalSimplexSolver().Solve(model, writer));
-                        RevisedPrimalSimplexSolver Rsolver = new RevisedPrimalSimplexSolver();
-
-                        RunSolver(() => Rsolver.Solve(model, writer));
-
                         break;
                     case algorithms.Branch_And_Bound:
-                        // RunSolver(() => new PrimalSimplexSolver().Solve(model, writer));
-                        BranchAndBoundSolver BBsolver = new BranchAndBoundSolver();
-
-                        RunSolver(() => BBsolver.Solve(model, writer));
-
                         break;
                     case algorithms.Cutting_plane:
-                        // RunSolver(() => new PrimalSimplexSolver().Solve(model, writer));
-                        CuttingPlaneSolver CPsolver = new CuttingPlaneSolver();
-
-                        RunSolver(() => CPsolver.Solve(model, writer));
-
                         break;
                     case algorithms.Napsack:
                         RunSolver(() => new BranchAndBoundKnapsackSolver().Solve(model, writer));
-                        break;
-                    case algorithms.sensitivity:
-                        showSensitivity();
-                        break;
-                    case algorithms.Duality:
-                        ShowDuality();
                         break;
                     case algorithms.exit:
                         terminate = true;
@@ -157,7 +122,6 @@ namespace Simplex_Solver_APP
                 Console.ResetColor();
 
                 solve();
-
 
                 writer.WriteLine();
                 writer.WriteLine("========================================================\n");
@@ -336,288 +300,10 @@ namespace Simplex_Solver_APP
             Console.WriteLine($"[{ts()}] [READY] Simplex solver online.\n");
 
             Console.ResetColor();
+            ;
 
-        }
-        public static void ShowDuality()
-        {
-            if (lastOptimal == null || !lastOptimal.IsOptimal)
-            {
-                Console.WriteLine("Run Primal Simplex first.");
-                return;
-            }
 
-            Console.ForegroundColor = ConsoleColor.Cyan;
-            Console.WriteLine("Building and solving the Dual Model...");
-            Console.ResetColor();
 
-            PrimalSimplexSolver solver = new PrimalSimplexSolver();
-
-            // Rebuild the solved LP relaxation
-            solver.Solve(model, writer);
-
-            Duality dual = new Duality(solver.SolvedModel);
-
-            writer.WriteLine();
-            writer.WriteLine(dual.DisplayDual());
-
-            Formulation dualModel = dual.BuildDual();
-
-            writer.WriteLine();
-            writer.WriteLine("Solving the Dual Model...");
-            writer.WriteLine();
-
-            PrimalSimplexSolver dualSolver = new PrimalSimplexSolver();
-            dualSolver.Solve(dualModel, writer);
-
-            writer.WriteLine();
-            writer.WriteLine(
-                dual.VerifyDuality(
-                    lastOptimal.ObjectiveValue,
-                    dualSolver.GetLastResult().ObjectiveValue));
-
-            Console.ForegroundColor = ConsoleColor.Green;
-            Console.WriteLine("Dual model solved. See OUTPUT.txt.");
-            Console.ResetColor();
-        }
-        public static void showSensitivity()
-        {
-            if (lastOptimal == null || !lastOptimal.IsOptimal)
-            {
-                Console.ForegroundColor = ConsoleColor.Yellow;
-                Console.WriteLine("Run Primal Simplex first.");
-                Console.ResetColor();
-                return;
-            }
-
-            SensitivityAnalysis analyser = new SensitivityAnalysis(lastOptimal);
-
-            bool back = false;
-
-            while (!back)
-            {
-                Console.WriteLine();
-                Console.WriteLine("================================================");
-                Console.WriteLine("          SENSITIVITY ANALYSIS MENU");
-                Console.WriteLine("================================================");
-                Console.WriteLine("1. Display range of Non-Basic Variable");
-                Console.WriteLine("2. Apply change to Non-Basic Variable");
-                Console.WriteLine("3. Display range of Basic Variable");
-                Console.WriteLine("4. Apply change to Basic Variable");
-                Console.WriteLine("5. Display RHS range");
-                Console.WriteLine("6. Apply RHS change");
-                Console.WriteLine("7. Display Non-Basic Column range");
-                Console.WriteLine("8. Apply Non-Basic Column change");
-                Console.WriteLine("9. Add New Activity");
-                Console.WriteLine("10. Add New Constraint");
-                Console.WriteLine("11. Display Shadow Prices");
-                Console.WriteLine("12. Display Reduced Costs");
-                Console.WriteLine("13. Return to Main Menu");
-                Console.Write("Select: ");
-
-                int choice;
-
-                if (!int.TryParse(Console.ReadLine(), out choice))
-                    continue;
-
-                writer.WriteLine();
-                writer.WriteLine("================================================");
-                writer.WriteLine($"Sensitivity Option {choice}");
-                writer.WriteLine("================================================");
-
-                switch (choice)
-                {
-                    case 1:
-                        {
-                            int v = AskVariable();
-                            writer.WriteLine(analyser.DisplayNonBasicRange(v));
-                            break;
-                        }
-
-                    case 2:
-                        {
-                            int v = AskVariable();
-
-                            Console.Write("New objective coefficient: ");
-                            double c = double.Parse(Console.ReadLine());
-
-                            writer.WriteLine(analyser.ApplyNonBasicVariableChange(v, c));
-                            break;
-                        }
-
-                    case 3:
-                        {
-                            int v = AskVariable();
-                            writer.WriteLine(analyser.DisplayBasicRange(v));
-                            break;
-                        }
-
-                    case 4:
-                        {
-                            int v = AskVariable();
-
-                            Console.Write("New objective coefficient: ");
-                            double c = double.Parse(Console.ReadLine());
-
-                            writer.WriteLine(analyser.ApplyBasicVariableChange(v, c));
-                            break;
-                        }
-
-                    case 5:
-                        {
-                            int c = AskConstraint();
-                            writer.WriteLine(analyser.DisplayRHSRange(c));
-                            break;
-                        }
-
-                    case 6:
-                        {
-                            int c = AskConstraint();
-
-                            Console.Write("New RHS: ");
-                            double rhs = double.Parse(Console.ReadLine());
-
-                            writer.WriteLine(analyser.ApplyRHSChange(c, rhs));
-                            break;
-                        }
-
-                    case 7:
-                        {
-                            int c = AskConstraint();
-                            int v = AskVariable();
-
-                            writer.WriteLine(analyser.DisplayColumnRange(c, v));
-                            break;
-                        }
-
-                    case 8:
-                        {
-                            int c = AskConstraint();
-                            int v = AskVariable();
-
-                            Console.Write("New coefficient: ");
-                            double value = double.Parse(Console.ReadLine());
-
-                            writer.WriteLine(analyser.ApplyColumnChange(c, v, value));
-                            break;
-                        }
-
-                    case 9:
-                        {
-                            Console.Write("Objective coefficient: ");
-                            double obj = double.Parse(Console.ReadLine());
-
-                            List<double> coeff = new List<double>();
-
-                            for (int i = 0; i < model.Constraint.Count; i++)
-                            {
-                                Console.Write($"Coefficient in c{i + 1}: ");
-                                coeff.Add(double.Parse(Console.ReadLine()));
-                            }
-
-                            writer.WriteLine(
-                                analyser.AddActivity(
-                                    obj,
-                                    coeff,
-                                    Sign_Restriction.Positive));
-
-                            break;
-                        }
-
-                    case 10:
-                        {
-                            List<double> coeff = new List<double>();
-
-                            for (int i = 0; i < model.VarCount; i++)
-                            {
-                                Console.Write($"Coefficient for x{i + 1}: ");
-                                coeff.Add(double.Parse(Console.ReadLine()));
-                            }
-
-                            Console.Write("Relation (<=, >=, =): ");
-
-                            string relation = Console.ReadLine();
-
-                            Equality_Sign sign =
-                                relation == "<=" ?
-                                Equality_Sign.LessThanOrEqual :
-                                relation == ">=" ?
-                                Equality_Sign.GreaterThanOrEqual :
-                                Equality_Sign.Equal;
-
-                            Console.Write("RHS: ");
-
-                            double rhs = double.Parse(Console.ReadLine());
-
-                            writer.WriteLine(
-                                analyser.AddConstraint(
-                                    coeff,
-                                    sign,
-                                    rhs));
-
-                            break;
-                        }
-
-                    case 11:
-                        {
-                            writer.WriteLine(analyser.DisplayShadowPrices());
-                            break;
-                        }
-
-                    case 12:
-                        {
-                            writer.WriteLine(analyser.DisplayReducedCosts());
-                            break;
-                        }
-
-                    case 13:
-                        {
-                            back = true;
-                            break;
-                        }
-                }
-
-                Console.ForegroundColor = ConsoleColor.Green;
-                Console.WriteLine("Result written to OUTPUT.txt");
-                Console.ResetColor();
-            }
-        }
-        private static int AskVariable()
-        {
-            while (true)
-            {
-                Console.Write($"Variable (1-{model.VarCount}): ");
-
-                if (int.TryParse(Console.ReadLine(), out int choice))
-                {
-                    if (choice >= 1 && choice <= model.VarCount)
-                        return choice - 1;
-                }
-
-                Console.ForegroundColor = ConsoleColor.Red;
-                Console.WriteLine($"Please enter a number between 1 and {model.VarCount}.");
-                Console.ResetColor();
-            }
-        }
-
-        private static int AskConstraint()
-        {
-            while (true)
-            {
-                Console.Write($"Constraint (1-{model.Constraint.Count}): ");
-
-                if (int.TryParse(Console.ReadLine(), out int constraint) &&
-                    constraint >= 1 &&
-                    constraint <= model.Constraint.Count)
-                {
-                    // Return zero-based index for internal use
-                    return constraint - 1;
-                }
-
-                Console.ForegroundColor = ConsoleColor.Red;
-                Console.WriteLine($"Please enter a number between 1 and {model.Constraint.Count}.");
-                Console.ResetColor();
-            }
         }
     }
 }
-

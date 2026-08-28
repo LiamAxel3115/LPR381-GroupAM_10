@@ -35,9 +35,5 @@ namespace Simplex_Solver_APP.Model
 
             return output.ToString();
         }
-        public void SetRHS(double newValue)
-        {
-            RHS_Value = newValue;
-        }
     }
 }

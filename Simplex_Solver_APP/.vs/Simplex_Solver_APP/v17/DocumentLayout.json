@@ -1,54 +1,38 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\lee\\Downloads\\project_lpr\\LPR381-GroupAM_10\\Simplex_Solver_APP\\",
+  "WorkspaceRootPath": "C:\\Users\\lee\\OneDrive\\Documents\\Github local repostories\\LPR_PROJECT_AM\\LPR381-GroupAM_10\\Simplex_Solver_APP\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{9CE2A5A4-94F9-4801-A34E-583E585EC077}|Simplex_Solver_APP.csproj|c:\\users\\lee\\downloads\\project_lpr\\lpr381-groupam_10\\simplex_solver_app\\solvers\\branchandboundsolver.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{9CE2A5A4-94F9-4801-A34E-583E585EC077}|Simplex_Solver_APP.csproj|solutionrelative:solvers\\branchandboundsolver.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\lee\\OneDrive\\Documents\\Github local repostories\\LPR_PROJECT_AM\\LPR381-GroupAM_10\\Simplex_Solver_APP\\OUTPUT.txt||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:OUTPUT.txt||{8B382828-6202-11D1-8870-0000F87579D2}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{9CE2A5A4-94F9-4801-A34E-583E585EC077}|Simplex_Solver_APP.csproj|c:\\users\\lee\\downloads\\project_lpr\\lpr381-groupam_10\\simplex_solver_app\\analysis\\basisanalysis.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{9CE2A5A4-94F9-4801-A34E-583E585EC077}|Simplex_Solver_APP.csproj|solutionrelative:analysis\\basisanalysis.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\lee\\OneDrive\\Documents\\Github local repostories\\LPR_PROJECT_AM\\LPR381-GroupAM_10\\Simplex_Solver_APP\\File_handler\\File_writer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:File_handler\\File_writer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{9CE2A5A4-94F9-4801-A34E-583E585EC077}|Simplex_Solver_APP.csproj|c:\\users\\lee\\downloads\\project_lpr\\lpr381-groupam_10\\simplex_solver_app\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{9CE2A5A4-94F9-4801-A34E-583E585EC077}|Simplex_Solver_APP.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\lee\\OneDrive\\Documents\\Github local repostories\\LPR_PROJECT_AM\\LPR381-GroupAM_10\\Simplex_Solver_APP\\File_handler\\File_Reader.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:File_handler\\File_Reader.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\lee\\Downloads\\project_lpr\\LPR381-GroupAM_10\\Simplex_Solver_APP\\Analysis\\SensitivityAnalysis.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Analysis\\SensitivityAnalysis.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\lee\\OneDrive\\Documents\\Github local repostories\\LPR_PROJECT_AM\\LPR381-GroupAM_10\\Simplex_Solver_APP\\Model\\Formulation.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Model\\Formulation.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\lee\\Downloads\\project_lpr\\LPR381-GroupAM_10\\Simplex_Solver_APP\\Analysis\\Reduced.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Analysis\\Reduced.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\lee\\OneDrive\\Documents\\Github local repostories\\LPR_PROJECT_AM\\LPR381-GroupAM_10\\Simplex_Solver_APP\\Model\\Formatting.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Model\\Formatting.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\lee\\Downloads\\project_lpr\\LPR381-GroupAM_10\\Simplex_Solver_APP\\Analysis\\Optimal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Analysis\\Optimal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\lee\\OneDrive\\Documents\\Github local repostories\\LPR_PROJECT_AM\\LPR381-GroupAM_10\\Simplex_Solver_APP\\Model\\Conditions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Model\\Conditions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\lee\\Downloads\\project_lpr\\LPR381-GroupAM_10\\Simplex_Solver_APP\\Analysis\\DualSimplex.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Analysis\\DualSimplex.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\lee\\OneDrive\\Documents\\Github local repostories\\LPR_PROJECT_AM\\LPR381-GroupAM_10\\Simplex_Solver_APP\\INPUT.txt||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:INPUT.txt||{8B382828-6202-11D1-8870-0000F87579D2}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\lee\\Downloads\\project_lpr\\LPR381-GroupAM_10\\Simplex_Solver_APP\\Analysis\\Duality.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Analysis\\Duality.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{9CE2A5A4-94F9-4801-A34E-583E585EC077}|Simplex_Solver_APP.csproj|C:\\Users\\lee\\Downloads\\project_lpr\\LPR381-GroupAM_10\\Simplex_Solver_APP\\Model\\Conditions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{9CE2A5A4-94F9-4801-A34E-583E585EC077}|Simplex_Solver_APP.csproj|solutionrelative:Model\\Conditions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{9CE2A5A4-94F9-4801-A34E-583E585EC077}|Simplex_Solver_APP.csproj|C:\\Users\\lee\\Downloads\\project_lpr\\LPR381-GroupAM_10\\Simplex_Solver_APP\\Model\\Formatting.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{9CE2A5A4-94F9-4801-A34E-583E585EC077}|Simplex_Solver_APP.csproj|solutionrelative:Model\\Formatting.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{9CE2A5A4-94F9-4801-A34E-583E585EC077}|Simplex_Solver_APP.csproj|C:\\Users\\lee\\Downloads\\project_lpr\\LPR381-GroupAM_10\\Simplex_Solver_APP\\Model\\Formulation.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{9CE2A5A4-94F9-4801-A34E-583E585EC077}|Simplex_Solver_APP.csproj|solutionrelative:Model\\Formulation.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{9CE2A5A4-94F9-4801-A34E-583E585EC077}|Simplex_Solver_APP.csproj|C:\\Users\\lee\\Downloads\\project_lpr\\LPR381-GroupAM_10\\Simplex_Solver_APP\\Solvers\\PrimalSimplexSolver.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{9CE2A5A4-94F9-4801-A34E-583E585EC077}|Simplex_Solver_APP.csproj|solutionrelative:Solvers\\PrimalSimplexSolver.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\lee\\OneDrive\\Documents\\Github local repostories\\LPR_PROJECT_AM\\LPR381-GroupAM_10\\Simplex_Solver_APP\\Program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -58,7 +42,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 14,
+          "SelectedChildIndex": 19,
           "Children": [
             {
               "$type": "Bookmark",
@@ -118,150 +102,100 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "BranchAndBoundSolver.cs",
-              "DocumentMoniker": "C:\\Users\\lee\\Downloads\\project_lpr\\LPR381-GroupAM_10\\Simplex_Solver_APP\\Solvers\\BranchAndBoundSolver.cs",
-              "RelativeDocumentMoniker": "Solvers\\BranchAndBoundSolver.cs",
-              "ToolTip": "C:\\Users\\lee\\Downloads\\project_lpr\\LPR381-GroupAM_10\\Simplex_Solver_APP\\Solvers\\BranchAndBoundSolver.cs",
-              "RelativeToolTip": "Solvers\\BranchAndBoundSolver.cs",
-              "ViewState": "AgIAACoAAAAAAAAAAAAEwEAAAAAUAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-08-27T10:04:43.497Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "SensitivityAnalysis.cs",
-              "DocumentMoniker": "C:\\Users\\lee\\Downloads\\project_lpr\\LPR381-GroupAM_10\\Simplex_Solver_APP\\Analysis\\SensitivityAnalysis.cs",
-              "RelativeDocumentMoniker": "Analysis\\SensitivityAnalysis.cs",
-              "ToolTip": "C:\\Users\\lee\\Downloads\\project_lpr\\LPR381-GroupAM_10\\Simplex_Solver_APP\\Analysis\\SensitivityAnalysis.cs",
-              "RelativeToolTip": "Analysis\\SensitivityAnalysis.cs",
-              "ViewState": "AgIAABEBAAAAAAAAAAAUwGwBAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-08-27T10:02:22.3Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "Optimal.cs",
-              "DocumentMoniker": "C:\\Users\\lee\\Downloads\\project_lpr\\LPR381-GroupAM_10\\Simplex_Solver_APP\\Analysis\\Optimal.cs",
-              "RelativeDocumentMoniker": "Analysis\\Optimal.cs",
-              "ToolTip": "C:\\Users\\lee\\Downloads\\project_lpr\\LPR381-GroupAM_10\\Simplex_Solver_APP\\Analysis\\Optimal.cs",
-              "RelativeToolTip": "Analysis\\Optimal.cs",
-              "ViewState": "AgIAAGYAAAAAAAAAAAAUwIsAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-08-27T10:01:33.198Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "DualSimplex.cs",
-              "DocumentMoniker": "C:\\Users\\lee\\Downloads\\project_lpr\\LPR381-GroupAM_10\\Simplex_Solver_APP\\Analysis\\DualSimplex.cs",
-              "RelativeDocumentMoniker": "Analysis\\DualSimplex.cs",
-              "ToolTip": "C:\\Users\\lee\\Downloads\\project_lpr\\LPR381-GroupAM_10\\Simplex_Solver_APP\\Analysis\\DualSimplex.cs",
-              "RelativeToolTip": "Analysis\\DualSimplex.cs",
-              "ViewState": "AgIAAJEAAAAAAAAAAAAUwLYAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-08-27T10:01:13.05Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "Duality.cs",
-              "DocumentMoniker": "C:\\Users\\lee\\Downloads\\project_lpr\\LPR381-GroupAM_10\\Simplex_Solver_APP\\Analysis\\Duality.cs",
-              "RelativeDocumentMoniker": "Analysis\\Duality.cs",
-              "ToolTip": "C:\\Users\\lee\\Downloads\\project_lpr\\LPR381-GroupAM_10\\Simplex_Solver_APP\\Analysis\\Duality.cs",
-              "RelativeToolTip": "Analysis\\Duality.cs",
-              "ViewState": "AgIAAEgAAAAAAAAAAAAUwG0AAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-08-27T10:00:50.441Z"
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "BasisAnalysis.cs",
-              "DocumentMoniker": "C:\\Users\\lee\\Downloads\\project_lpr\\LPR381-GroupAM_10\\Simplex_Solver_APP\\Analysis\\BasisAnalysis.cs",
-              "RelativeDocumentMoniker": "Analysis\\BasisAnalysis.cs",
-              "ToolTip": "C:\\Users\\lee\\Downloads\\project_lpr\\LPR381-GroupAM_10\\Simplex_Solver_APP\\Analysis\\BasisAnalysis.cs",
-              "RelativeToolTip": "Analysis\\BasisAnalysis.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAHwAAAAAAAAAAAAAAA==",
+              "Title": "File_writer.cs",
+              "DocumentMoniker": "C:\\Users\\lee\\OneDrive\\Documents\\Github local repostories\\LPR_PROJECT_AM\\LPR381-GroupAM_10\\Simplex_Solver_APP\\File_handler\\File_writer.cs",
+              "RelativeDocumentMoniker": "File_handler\\File_writer.cs",
+              "ToolTip": "C:\\Users\\lee\\OneDrive\\Documents\\Github local repostories\\LPR_PROJECT_AM\\LPR381-GroupAM_10\\Simplex_Solver_APP\\File_handler\\File_writer.cs",
+              "RelativeToolTip": "File_handler\\File_writer.cs",
+              "ViewState": "AgIAACwAAAAAAAAAAAAowFEAAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-08-27T10:00:21.63Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "Conditions.cs",
-              "DocumentMoniker": "C:\\Users\\lee\\Downloads\\project_lpr\\LPR381-GroupAM_10\\Simplex_Solver_APP\\Model\\Conditions.cs",
-              "RelativeDocumentMoniker": "Model\\Conditions.cs",
-              "ToolTip": "C:\\Users\\lee\\Downloads\\project_lpr\\LPR381-GroupAM_10\\Simplex_Solver_APP\\Model\\Conditions.cs",
-              "RelativeToolTip": "Model\\Conditions.cs",
-              "ViewState": "AgIAAAYAAAAAAAAAAAAUwCsAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-08-27T09:58:51.743Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "Formatting.cs",
-              "DocumentMoniker": "C:\\Users\\lee\\Downloads\\project_lpr\\LPR381-GroupAM_10\\Simplex_Solver_APP\\Model\\Formatting.cs",
-              "RelativeDocumentMoniker": "Model\\Formatting.cs",
-              "ToolTip": "C:\\Users\\lee\\Downloads\\project_lpr\\LPR381-GroupAM_10\\Simplex_Solver_APP\\Model\\Formatting.cs",
-              "RelativeToolTip": "Model\\Formatting.cs",
-              "ViewState": "AgIAAAMAAAAAAAAAAAAAACEAAAA7AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-08-27T09:58:30.206Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 10,
-              "Title": "Formulation.cs",
-              "DocumentMoniker": "C:\\Users\\lee\\Downloads\\project_lpr\\LPR381-GroupAM_10\\Simplex_Solver_APP\\Model\\Formulation.cs",
-              "RelativeDocumentMoniker": "Model\\Formulation.cs",
-              "ToolTip": "C:\\Users\\lee\\Downloads\\project_lpr\\LPR381-GroupAM_10\\Simplex_Solver_APP\\Model\\Formulation.cs",
-              "RelativeToolTip": "Model\\Formulation.cs",
-              "ViewState": "AgIAACAAAAAAAAAAAAAUwEUAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-08-27T09:58:04.414Z"
+              "WhenOpened": "2026-08-18T19:16:06.534Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "Program.cs",
-              "DocumentMoniker": "C:\\Users\\lee\\Downloads\\project_lpr\\LPR381-GroupAM_10\\Simplex_Solver_APP\\Program.cs",
-              "RelativeDocumentMoniker": "Program.cs",
-              "ToolTip": "C:\\Users\\lee\\Downloads\\project_lpr\\LPR381-GroupAM_10\\Simplex_Solver_APP\\Program.cs",
-              "RelativeToolTip": "Program.cs",
-              "ViewState": "AgIAADsCAAAAAAAAAAAUwFACAABLAAAAAAAAAA==",
+              "Title": "File_Reader.cs",
+              "DocumentMoniker": "C:\\Users\\lee\\OneDrive\\Documents\\Github local repostories\\LPR_PROJECT_AM\\LPR381-GroupAM_10\\Simplex_Solver_APP\\File_handler\\File_Reader.cs",
+              "RelativeDocumentMoniker": "File_handler\\File_Reader.cs",
+              "ToolTip": "C:\\Users\\lee\\OneDrive\\Documents\\Github local repostories\\LPR_PROJECT_AM\\LPR381-GroupAM_10\\Simplex_Solver_APP\\File_handler\\File_Reader.cs",
+              "RelativeToolTip": "File_handler\\File_Reader.cs",
+              "ViewState": "AgIAALYAAAAAAAAAAAAgwMkAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-08-18T18:58:43.841Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-08-18T19:14:33.569Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Formulation.cs",
+              "DocumentMoniker": "C:\\Users\\lee\\OneDrive\\Documents\\Github local repostories\\LPR_PROJECT_AM\\LPR381-GroupAM_10\\Simplex_Solver_APP\\Model\\Formulation.cs",
+              "RelativeDocumentMoniker": "Model\\Formulation.cs",
+              "ToolTip": "C:\\Users\\lee\\OneDrive\\Documents\\Github local repostories\\LPR_PROJECT_AM\\LPR381-GroupAM_10\\Simplex_Solver_APP\\Model\\Formulation.cs",
+              "RelativeToolTip": "Model\\Formulation.cs",
+              "ViewState": "AgIAABgAAAAAAAAAAAAowD0AAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-08-18T19:12:51.517Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 4,
-              "Title": "Reduced.cs",
-              "DocumentMoniker": "C:\\Users\\lee\\Downloads\\project_lpr\\LPR381-GroupAM_10\\Simplex_Solver_APP\\Analysis\\Reduced.cs",
-              "RelativeDocumentMoniker": "Analysis\\Reduced.cs",
-              "ToolTip": "C:\\Users\\lee\\Downloads\\project_lpr\\LPR381-GroupAM_10\\Simplex_Solver_APP\\Analysis\\Reduced.cs",
-              "RelativeToolTip": "Analysis\\Reduced.cs",
-              "ViewState": "AgIAAEoAAAAAAAAAAAAUwFoAAAAAAAAAAAAAAA==",
+              "Title": "Formatting.cs",
+              "DocumentMoniker": "C:\\Users\\lee\\OneDrive\\Documents\\Github local repostories\\LPR_PROJECT_AM\\LPR381-GroupAM_10\\Simplex_Solver_APP\\Model\\Formatting.cs",
+              "RelativeDocumentMoniker": "Model\\Formatting.cs",
+              "ToolTip": "C:\\Users\\lee\\OneDrive\\Documents\\Github local repostories\\LPR_PROJECT_AM\\LPR381-GroupAM_10\\Simplex_Solver_APP\\Model\\Formatting.cs",
+              "RelativeToolTip": "Model\\Formatting.cs",
+              "ViewState": "AgIAABEAAAAAAAAAAAAgwDQAAAAOAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-08-27T10:01:52.538Z"
+              "WhenOpened": "2026-08-18T19:10:53.192Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
-              "Title": "PrimalSimplexSolver.cs",
-              "DocumentMoniker": "C:\\Users\\lee\\Downloads\\project_lpr\\LPR381-GroupAM_10\\Simplex_Solver_APP\\Solvers\\PrimalSimplexSolver.cs",
-              "RelativeDocumentMoniker": "Solvers\\PrimalSimplexSolver.cs",
-              "ToolTip": "C:\\Users\\lee\\Downloads\\project_lpr\\LPR381-GroupAM_10\\Simplex_Solver_APP\\Solvers\\PrimalSimplexSolver.cs",
-              "RelativeToolTip": "Solvers\\PrimalSimplexSolver.cs",
-              "ViewState": "AgIAAFQBAAAAAAAAAAAUwEICAAAAAAAAAAAAAA==",
+              "DocumentIndex": 5,
+              "Title": "Conditions.cs",
+              "DocumentMoniker": "C:\\Users\\lee\\OneDrive\\Documents\\Github local repostories\\LPR_PROJECT_AM\\LPR381-GroupAM_10\\Simplex_Solver_APP\\Model\\Conditions.cs",
+              "RelativeDocumentMoniker": "Model\\Conditions.cs",
+              "ToolTip": "C:\\Users\\lee\\OneDrive\\Documents\\Github local repostories\\LPR_PROJECT_AM\\LPR381-GroupAM_10\\Simplex_Solver_APP\\Model\\Conditions.cs",
+              "RelativeToolTip": "Model\\Conditions.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAAAkAAAAKAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-08-27T09:57:31.764Z"
+              "WhenOpened": "2026-08-18T19:10:18.097Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "OUTPUT.txt",
+              "DocumentMoniker": "C:\\Users\\lee\\OneDrive\\Documents\\Github local repostories\\LPR_PROJECT_AM\\LPR381-GroupAM_10\\Simplex_Solver_APP\\OUTPUT.txt",
+              "RelativeDocumentMoniker": "OUTPUT.txt",
+              "ToolTip": "C:\\Users\\lee\\OneDrive\\Documents\\Github local repostories\\LPR_PROJECT_AM\\LPR381-GroupAM_10\\Simplex_Solver_APP\\OUTPUT.txt",
+              "RelativeToolTip": "OUTPUT.txt",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003109|",
+              "WhenOpened": "2026-08-18T19:09:05.648Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "INPUT.txt",
+              "DocumentMoniker": "C:\\Users\\lee\\OneDrive\\Documents\\Github local repostories\\LPR_PROJECT_AM\\LPR381-GroupAM_10\\Simplex_Solver_APP\\INPUT.txt",
+              "RelativeDocumentMoniker": "INPUT.txt",
+              "ToolTip": "C:\\Users\\lee\\OneDrive\\Documents\\Github local repostories\\LPR_PROJECT_AM\\LPR381-GroupAM_10\\Simplex_Solver_APP\\INPUT.txt",
+              "RelativeToolTip": "INPUT.txt",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAAXAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003109|",
+              "WhenOpened": "2026-08-18T19:08:52.584Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\lee\\OneDrive\\Documents\\Github local repostories\\LPR_PROJECT_AM\\LPR381-GroupAM_10\\Simplex_Solver_APP\\Program.cs",
+              "RelativeDocumentMoniker": "Program.cs",
+              "ToolTip": "C:\\Users\\lee\\OneDrive\\Documents\\Github local repostories\\LPR_PROJECT_AM\\LPR381-GroupAM_10\\Simplex_Solver_APP\\Program.cs",
+              "RelativeToolTip": "Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAbAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-08-18T18:58:43.841Z"
             }
           ]
         }
