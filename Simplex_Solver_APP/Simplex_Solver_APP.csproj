@@ -44,13 +44,22 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Analysis\BasisAnalysis.cs" />
+    <Compile Include="Analysis\Duality.cs" />
+    <Compile Include="Analysis\DualSimplex.cs" />
+    <Compile Include="Analysis\Optimal.cs" />
+    <Compile Include="Analysis\Reduced.cs" />
+    <Compile Include="Analysis\SensitivityAnalysis.cs" />
     <Compile Include="File_handler\File_Reader.cs" />
     <Compile Include="File_handler\File_writer.cs" />
     <Compile Include="Model\Conditions.cs" />
     <Compile Include="Model\Formatting.cs" />
     <Compile Include="Model\Formulation.cs" />
     <Compile Include="Solvers\PrimalSimplexSolver.cs" />
+    <Compile Include="Solvers\BranchAndBoundSolver.cs" />
     <Compile Include="Solvers\BranchAndBoundKnapsackSolver.cs" />
+    <Compile Include="Solvers\CuttingPlaneSolver.cs" />
+    <Compile Include="Solvers\RevisedPrimalSimplexSolver.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
