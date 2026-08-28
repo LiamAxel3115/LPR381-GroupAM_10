@@ -1,10 +1,10 @@
-C:\Users\lee\OneDrive\Documents\Github local repostories\LPR_PROJECT_AM\LPR381-GroupAM_10\Simplex_Solver_APP\bin\Debug\Simplex_Solver_APP.exe.config
-C:\Users\lee\OneDrive\Documents\Github local repostories\LPR_PROJECT_AM\LPR381-GroupAM_10\Simplex_Solver_APP\bin\Debug\Simplex_Solver_APP.exe
-C:\Users\lee\OneDrive\Documents\Github local repostories\LPR_PROJECT_AM\LPR381-GroupAM_10\Simplex_Solver_APP\bin\Debug\Simplex_Solver_APP.pdb
-C:\Users\lee\OneDrive\Documents\Github local repostories\LPR_PROJECT_AM\LPR381-GroupAM_10\Simplex_Solver_APP\obj\Debug\Simplex_Solver_APP.csproj.AssemblyReference.cache
-C:\Users\lee\OneDrive\Documents\Github local repostories\LPR_PROJECT_AM\LPR381-GroupAM_10\Simplex_Solver_APP\obj\Debug\Simplex_Solver_APP.csproj.CoreCompileInputs.cache
-C:\Users\lee\OneDrive\Documents\Github local repostories\LPR_PROJECT_AM\LPR381-GroupAM_10\Simplex_Solver_APP\obj\Debug\Simplex_Solver_APP.exe
-C:\Users\lee\OneDrive\Documents\Github local repostories\LPR_PROJECT_AM\LPR381-GroupAM_10\Simplex_Solver_APP\obj\Debug\Simplex_Solver_APP.pdb
+C:\Users\User\Downloads\Simplex_Solver_APP_updated\Simplex_Solver_APP\bin\Debug\Simplex_Solver_APP.exe.config
+C:\Users\User\Downloads\Simplex_Solver_APP_updated\Simplex_Solver_APP\bin\Debug\Simplex_Solver_APP.exe
+C:\Users\User\Downloads\Simplex_Solver_APP_updated\Simplex_Solver_APP\bin\Debug\Simplex_Solver_APP.pdb
+C:\Users\User\Downloads\Simplex_Solver_APP_updated\Simplex_Solver_APP\obj\Debug\Simplex_Solver_APP.csproj.AssemblyReference.cache
+C:\Users\User\Downloads\Simplex_Solver_APP_updated\Simplex_Solver_APP\obj\Debug\Simplex_Solver_APP.csproj.CoreCompileInputs.cache
+C:\Users\User\Downloads\Simplex_Solver_APP_updated\Simplex_Solver_APP\obj\Debug\Simplex_Solver_APP.exe
+C:\Users\User\Downloads\Simplex_Solver_APP_updated\Simplex_Solver_APP\obj\Debug\Simplex_Solver_APP.pdb
 C:\Users\User\Documents\LPR 381\Project\LPR381-GroupAM_10\Simplex_Solver_APP\bin\Debug\Simplex_Solver_APP.exe.config
 C:\Users\User\Documents\LPR 381\Project\LPR381-GroupAM_10\Simplex_Solver_APP\bin\Debug\Simplex_Solver_APP.exe
 C:\Users\User\Documents\LPR 381\Project\LPR381-GroupAM_10\Simplex_Solver_APP\bin\Debug\Simplex_Solver_APP.pdb
@@ -12,8 +12,3 @@ C:\Users\User\Documents\LPR 381\Project\LPR381-GroupAM_10\Simplex_Solver_APP\obj
 C:\Users\User\Documents\LPR 381\Project\LPR381-GroupAM_10\Simplex_Solver_APP\obj\Debug\Simplex_Solver_APP.csproj.CoreCompileInputs.cache
 C:\Users\User\Documents\LPR 381\Project\LPR381-GroupAM_10\Simplex_Solver_APP\obj\Debug\Simplex_Solver_APP.exe
 C:\Users\User\Documents\LPR 381\Project\LPR381-GroupAM_10\Simplex_Solver_APP\obj\Debug\Simplex_Solver_APP.pdb
-C:\Users\lee\Downloads\project_lpr\LPR381-GroupAM_10\Simplex_Solver_APP\obj\Debug\Simplex_Solver_APP.csproj.AssemblyReference.cache
-C:\Users\lee\Downloads\project_lpr\LPR381-GroupAM_10\Simplex_Solver_APP\obj\Debug\Simplex_Solver_APP.exe.config
-C:\Users\lee\Downloads\project_lpr\LPR381-GroupAM_10\Simplex_Solver_APP\obj\Debug\Simplex_Solver_APP.csproj.CoreCompileInputs.cache
-C:\Users\lee\Downloads\project_lpr\LPR381-GroupAM_10\Simplex_Solver_APP\obj\Debug\Simplex_Solver_APP.exe
-C:\Users\lee\Downloads\project_lpr\LPR381-GroupAM_10\Simplex_Solver_APP\obj\Debug\Simplex_Solver_APP.pdb

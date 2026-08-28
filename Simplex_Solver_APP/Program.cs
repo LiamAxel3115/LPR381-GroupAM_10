@@ -25,8 +25,12 @@ namespace Simplex_Solver_APP
         //    new BranchAndBoundKnapsackSolver(),
         //};
         private static Formulation model;
-        private static File_writer writer;
         private static Optimal lastOptimal;
+
+        // Every solver / analysis run gets its own fresh output file in this
+        // folder, so results from different runs never mix together.
+        private static readonly string outputDirectory =
+            Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Output");
 
         [STAThread]
         static void Main(string[] args)
@@ -36,22 +40,46 @@ namespace Simplex_Solver_APP
             Console.WriteLine(" \t \t \t WELCOME TO SIMPLEX SOLVER \t \t \t ");
             Console.WriteLine("===================================================================\n");
 
+            Directory.CreateDirectory(outputDirectory);
+
             //load the model from file
             string inputFile = InputFile();
-            string outputFile = OutputFile();
-
-            writer = new File_writer(outputFile, false, false);
 
             while (!LoadModel(inputFile))
             {
                 Console.WriteLine("Cannot continue. Model invalid.\n");
                 inputFile = InputFile();
             }
-            writer.WriteModelSummary(model);
-            Console.WriteLine("Model is begin written to OUTPUT file. ");
+
+            Console.WriteLine($"Each run's results will be written to its own file under: {outputDirectory}\n");
 
             Menu();
-            writer.Dispose();
+        }
+
+        // Creates a brand-new output file for a single run (one solver
+        // invocation, one sensitivity action, one duality run, ...), writes
+        // the parsed model summary as the first thing in it, and returns the
+        // writer so the caller can append that run's canonical form /
+        // iterations / results. The caller is responsible for disposing it
+        // when the run is finished.
+        private static File_writer NewRunWriter(string runName)
+        {
+            string safeName = string.Join("_", runName.Split(Path.GetInvalidFileNameChars()));
+            string fileName = $"{safeName}_{DateTime.Now:yyyyMMdd_HHmmss}.txt";
+            string path = Path.Combine(outputDirectory, fileName);
+
+            // File_writer requires the file to already exist.
+            File.WriteAllText(path, string.Empty);
+
+            File_writer runWriter = new File_writer(path, false, false);
+            runWriter.WriteModelSummary(model);
+            runWriter.WriteLine();
+
+            Console.ForegroundColor = ConsoleColor.DarkCyan;
+            Console.WriteLine($"Writing this run to: {path}");
+            Console.ResetColor();
+
+            return runWriter;
         }
 
         // functional  code blocks
@@ -96,36 +124,32 @@ namespace Simplex_Solver_APP
                 switch (option)
                 {
                     case algorithms.Primal:
-                        // RunSolver(() => new PrimalSimplexSolver().Solve(model, writer));
                         PrimalSimplexSolver solver = new PrimalSimplexSolver();
 
-                        RunSolver(() => solver.Solve(model, writer));
+                        RunSolver("Primal_Simplex", w => solver.Solve(model, w));
 
                         lastOptimal = solver.GetLastResult();
                         break;
                     case algorithms.revised:
-                        // RunSolver(() => new PrimalSimplexSolver().Solve(model, writer));
                         RevisedPrimalSimplexSolver Rsolver = new RevisedPrimalSimplexSolver();
 
-                        RunSolver(() => Rsolver.Solve(model, writer));
+                        RunSolver("Revised_Primal_Simplex", w => Rsolver.Solve(model, w));
 
                         break;
                     case algorithms.Branch_And_Bound:
-                        // RunSolver(() => new PrimalSimplexSolver().Solve(model, writer));
                         BranchAndBoundSolver BBsolver = new BranchAndBoundSolver();
 
-                        RunSolver(() => BBsolver.Solve(model, writer));
+                        RunSolver("Branch_And_Bound", w => BBsolver.Solve(model, w));
 
                         break;
                     case algorithms.Cutting_plane:
-                        // RunSolver(() => new PrimalSimplexSolver().Solve(model, writer));
                         CuttingPlaneSolver CPsolver = new CuttingPlaneSolver();
 
-                        RunSolver(() => CPsolver.Solve(model, writer));
+                        RunSolver("Cutting_Plane", w => CPsolver.Solve(model, w));
 
                         break;
                     case algorithms.Napsack:
-                        RunSolver(() => new BranchAndBoundKnapsackSolver().Solve(model, writer));
+                        RunSolver("Branch_And_Bound_Knapsack", w => new BranchAndBoundKnapsackSolver().Solve(model, w));
                         break;
                     case algorithms.sensitivity:
                         showSensitivity();
@@ -145,33 +169,37 @@ namespace Simplex_Solver_APP
 
             }
         }
-        // Runs a solver, reporting progress/errors to the console while the
-        // solver itself writes its full working (canonical form, tableau
-        // iterations, solution, etc.) to the OUTPUT file via 'writer'.
-        private static void RunSolver(Action solve)
+        // Runs a single solver in its own fresh output file: the file starts
+        // with the parsed model summary, then the solver writes its full
+        // working (canonical form, tableau iterations, solution, etc.) to
+        // that same file, and only that file. No other run's output ends up
+        // in it.
+        private static void RunSolver(string runName, Action<File_writer> solve)
         {
-            try
+            using (File_writer runWriter = NewRunWriter(runName))
             {
-                Console.ForegroundColor = ConsoleColor.Cyan;
-                Console.WriteLine("Solving... results are being written to the OUTPUT file.\n");
-                Console.ResetColor();
+                try
+                {
+                    Console.ForegroundColor = ConsoleColor.Cyan;
+                    Console.WriteLine("Solving... results are being written to the run's OUTPUT file.\n");
+                    Console.ResetColor();
 
-                solve();
+                    solve(runWriter);
 
+                    runWriter.WriteLine();
+                    runWriter.WriteLine("========================================================\n");
 
-                writer.WriteLine();
-                writer.WriteLine("========================================================\n");
-
-                Console.ForegroundColor = ConsoleColor.Green;
-                Console.WriteLine("\nDone. See the OUTPUT file for the full working.\n");
-                Console.ResetColor();
-            }
-            catch (Exception ex)
-            {
-                Console.ForegroundColor = ConsoleColor.Red;
-                Console.WriteLine("Solver error: " + ex.Message);
-                Console.ResetColor();
-                writer.WriteLine("Solver error: " + ex.Message);
+                    Console.ForegroundColor = ConsoleColor.Green;
+                    Console.WriteLine("\nDone. See the OUTPUT file above for the full working.\n");
+                    Console.ResetColor();
+                }
+                catch (Exception ex)
+                {
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine("Solver error: " + ex.Message);
+                    Console.ResetColor();
+                    runWriter.WriteLine("Solver error: " + ex.Message);
+                }
             }
         }
 
@@ -196,27 +224,6 @@ namespace Simplex_Solver_APP
             return "";
         }
 
-        private static string OutputFile()
-        {
-            Console.WriteLine("\nPress any key to Select the OUTPUT text file");
-            Console.ReadKey();
-            using (OpenFileDialog dialog = new OpenFileDialog())
-            {
-                dialog.Title = "Select OUTPUT file";
-                dialog.Filter = "Text files (*.txt)|*.txt";
-                dialog.CheckFileExists = true;
-                dialog.Multiselect = false;
-
-                if (dialog.ShowDialog() == DialogResult.OK)
-                {
-                    Console.ForegroundColor = ConsoleColor.Yellow;
-                    Console.WriteLine(dialog.FileName);
-                    Console.ResetColor();
-                    return dialog.FileName;
-                }
-            }
-            return "";
-        }
         private static bool LoadModel(string inputfile)
         {
             try
@@ -350,33 +357,36 @@ namespace Simplex_Solver_APP
             Console.WriteLine("Building and solving the Dual Model...");
             Console.ResetColor();
 
-            PrimalSimplexSolver solver = new PrimalSimplexSolver();
+            using (File_writer runWriter = NewRunWriter("Duality"))
+            {
+                PrimalSimplexSolver solver = new PrimalSimplexSolver();
 
-            // Rebuild the solved LP relaxation
-            solver.Solve(model, writer);
+                // Rebuild the solved LP relaxation
+                solver.Solve(model, runWriter);
 
-            Duality dual = new Duality(solver.SolvedModel);
+                Duality dual = new Duality(solver.SolvedModel);
 
-            writer.WriteLine();
-            writer.WriteLine(dual.DisplayDual());
+                runWriter.WriteLine();
+                runWriter.WriteLine(dual.DisplayDual());
 
-            Formulation dualModel = dual.BuildDual();
+                Formulation dualModel = dual.BuildDual();
 
-            writer.WriteLine();
-            writer.WriteLine("Solving the Dual Model...");
-            writer.WriteLine();
+                runWriter.WriteLine();
+                runWriter.WriteLine("Solving the Dual Model...");
+                runWriter.WriteLine();
 
-            PrimalSimplexSolver dualSolver = new PrimalSimplexSolver();
-            dualSolver.Solve(dualModel, writer);
+                PrimalSimplexSolver dualSolver = new PrimalSimplexSolver();
+                dualSolver.Solve(dualModel, runWriter);
 
-            writer.WriteLine();
-            writer.WriteLine(
-                dual.VerifyDuality(
-                    lastOptimal.ObjectiveValue,
-                    dualSolver.GetLastResult().ObjectiveValue));
+                runWriter.WriteLine();
+                runWriter.WriteLine(
+                    dual.VerifyDuality(
+                        lastOptimal.ObjectiveValue,
+                        dualSolver.GetLastResult().ObjectiveValue));
+            }
 
             Console.ForegroundColor = ConsoleColor.Green;
-            Console.WriteLine("Dual model solved. See OUTPUT.txt.");
+            Console.WriteLine("Dual model solved. See its OUTPUT file.");
             Console.ResetColor();
         }
         public static void showSensitivity()
@@ -391,6 +401,10 @@ namespace Simplex_Solver_APP
 
             SensitivityAnalysis analyser = new SensitivityAnalysis(lastOptimal);
 
+            // One output file for the whole sensitivity session (all the
+            // choices made below), separate from every solver's own file.
+            using (File_writer writer = NewRunWriter("Sensitivity_Analysis"))
+            {
             bool back = false;
 
             while (!back)
@@ -577,8 +591,9 @@ namespace Simplex_Solver_APP
                 }
 
                 Console.ForegroundColor = ConsoleColor.Green;
-                Console.WriteLine("Result written to OUTPUT.txt");
+                Console.WriteLine("Result written to this session's OUTPUT file.");
                 Console.ResetColor();
+            }
             }
         }
         private static int AskVariable()
